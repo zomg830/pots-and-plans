@@ -7,7 +7,7 @@ import CreateRestaurantView from './CreateRestaurantView';
 class App extends React.Component {
 
   state={
-    isSignedIn: false,
+    isSignedIn: false
   }
 
   render(){

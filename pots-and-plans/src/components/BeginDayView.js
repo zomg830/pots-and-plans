@@ -5,7 +5,7 @@ import GoogleAuth from './GoogleAuth';
 
 function BeginDayView(){
     return(
-        <div>
+        <div className="container">
             <Title />
             <p>Placeholder for Begin Day View components</p>
             <GoogleAuth />

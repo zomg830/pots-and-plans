@@ -2,9 +2,9 @@ import React from 'react';
 import '../index.css'
 
 
-function Title(){
+function Title(props){
     return(
-        <h1 id="title">Burger Bytes</h1>
+        <h1 id="title">{props.changeTitle}</h1>
     )
 }
 export default Title;
