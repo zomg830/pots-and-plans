@@ -1,8 +1,8 @@
 import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
-import LandingView from "../pages/LandingView";
 import Header from "./Header";
+import LandingView from "../pages/LandingView";
 // import BeginDayView from "../pages/BeginDayView";
 import CreateRestaurantView from "../pages/CreateRestaurantView";
 import NoMatch from "../pages/NoMatch";

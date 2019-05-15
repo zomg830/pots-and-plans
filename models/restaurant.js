@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const restaurantSchema = new Schema({
   restaurant_name: { type: String, required: true },
   owner_name: { type: String, required: true },
-  balance: { type: Number, required: true },
+  balance: { type: Number, required: true, default: 10000 },
   userId: String,
   date: { type: Date, default: Date.now }
 });

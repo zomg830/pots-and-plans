@@ -1,5 +1,9 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
+
 import history from "../history";
+import API from "../utils/API";
+import { createRestaurant } from "../actions";
 
 class CreateForm extends Component {
   state = { restaurantName: "", ownerName: "" };
@@ -15,20 +19,19 @@ class CreateForm extends Component {
     }
   };
 
-  clearInput = () => {
-    this.setState({ restaurantName: "", ownerName: "" });
-  };
-
   onFormSubmit = e => {
+    e.preventDefault();
+
     if (!this.state.restaurantName || !this.state.ownerName) {
-      e.preventDefault();
       this.renderError();
-      this.clearInput();
     }
 
     if (this.state.restaurantName && this.state.ownerName) {
-      console.log(this.state);
-      history.push("/");
+      const restaurantData = {
+        restaurant_name: this.state.restaurantName,
+        owner_name: this.state.ownerName
+      };
+      this.props.createRestaurant(restaurantData);
     }
   };
 
@@ -63,4 +66,11 @@ class CreateForm extends Component {
   }
 }
 
-export default CreateForm;
+const mapStateToProps = state => {
+  return { userId: state.auth.userId };
+};
+
+export default connect(
+  mapStateToProps,
+  { createRestaurant }
+)(CreateForm);

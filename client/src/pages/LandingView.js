@@ -3,27 +3,16 @@ import React, { Component } from "react";
 import "../index.css";
 import Title from "../components/Title";
 import Burger from "../components/Burger";
-import GoogleAuth from "../components/GoogleAuth";
-import API from "../utils/API";
+import RestaurantList from "../components/RestaurantList";
 
-class LandingView extends Component {
-  componentDidMount() {
-    this.loadRestaurants();
-  }
+const LandingView = () => {
+  return (
+    <div>
+      <Title title="Home" />
+      <Burger />
+      <RestaurantList />
+    </div>
+  );
+};
 
-  loadRestaurants = () => {
-    API.getRestaurants()
-      .then(res => console.log(res))
-      .catch(err => console.log(err));
-  };
-
-  render() {
-    return (
-      <div>
-        <Title title="Home" />
-        <Burger />
-      </div>
-    );
-  }
-}
 export default LandingView;

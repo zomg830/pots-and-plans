@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
-function NoMatch() {
+const NoMatch = () => {
   return <div>No Match Found</div>;
-}
+};
 
 export default NoMatch;

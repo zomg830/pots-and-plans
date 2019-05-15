@@ -3,7 +3,7 @@ import "../index.css";
 import Title from "../components/Title";
 import GoogleAuth from "../components/GoogleAuth";
 
-function BeginDayView() {
+const BeginDayView = () => {
   return (
     <div>
       <Title />
@@ -11,5 +11,5 @@ function BeginDayView() {
       <GoogleAuth />
     </div>
   );
-}
+};
 export default BeginDayView;
