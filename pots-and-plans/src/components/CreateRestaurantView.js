@@ -11,18 +11,23 @@ class CreateRestaurantView extends React.Component {
         userTitle: "Burger Bytes🍔"
     }
 
-    // handleNameChange = (e) => {
-    //     if(this.value) {
-    //     this.setState({ userTitle: e.target.value });
-    //     }
-    //     else {
-    //         this.setState({ userTitle: "Burger Bytes🍔"})
-    //     }
-    // }
-
+    //capture the user's input value & change userTitle state
     handleNameChange = (e) => {
+        var validateInputName = e.target.value;
+         // for security purposes only alphanumeric characters and spaces must be accepted
+        var regular = /^[\w ]+$/;
+        if(e.target.value && !regular.test(validateInputName)) {
+            alert("Business name contains invalid characters!");
+            return false;
+        }
+        else if(e.target.value) {
         this.setState({ userTitle: e.target.value }); 
-    }
+        return true;
+        }
+        else {
+            this.setState({ userTitle: "Burger Bytes🍔"});
+        }
+    };
 
     render() {
         return(
