@@ -1,14 +1,15 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import history from "../history";
-import API from "../utils/API";
-import { createRestaurant } from "../actions";
+import { createRestaurant, changeTitle } from "../actions";
 
 class CreateForm extends Component {
   state = { restaurantName: "", ownerName: "" };
 
-  onInputChange = e => this.setState({ [e.target.name]: e.target.value });
+  onInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    this.props.changeTitle(e.target.value);
+  };
 
   renderError = component => {
     if (!this.state.restaurantName && component === "restaurant") {
@@ -72,5 +73,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { createRestaurant }
+  { createRestaurant, changeTitle }
 )(CreateForm);
