@@ -14,12 +14,13 @@ body {
     monospace;
 } */
 
-#title{
-  font-size: 6vw;
+#title {
+  font-size: 5vw;
   text-align: center;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
+  text-shadow: -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red, 2px 2px 0 red;
 }
-.button{
+.button {
   font-size: 3vh;
   background-color: rgb(14, 146, 14);
   display: block;
@@ -27,9 +28,9 @@ body {
   width: 200px;
   border: none;
   padding: 10px;
-  font-family: 'Press Start 2P', cursive;
+  font-family: "Press Start 2P", cursive;
 }
-#burger-img{
+#burger-img {
   width: 20vw;
   display: block;
   margin: 0 auto;

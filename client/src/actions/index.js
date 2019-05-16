@@ -4,8 +4,9 @@ import {
   FETCH_RESTAURANTS,
   CREATE_RESTAURANT,
   FETCH_RESTAURANT,
-  DELETE_RESTAURANT
-  // EDIT_RESTAURANT
+  DELETE_RESTAURANT,
+  // EDIT_RESTAURANT,
+  CHANGE_TITLE
 } from "./types";
 import API from "../utils/API";
 import history from "../history";
@@ -20,6 +21,13 @@ export const signIn = userId => {
 export const signOut = () => {
   return {
     type: SIGN_OUT
+  };
+};
+
+export const changeTitle = str => {
+  return {
+    type: CHANGE_TITLE,
+    payload: str
   };
 };
 
