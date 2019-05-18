@@ -1,3 +1,4 @@
+//Importing these variables from the types.js file, minimizes risks of typos
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -10,6 +11,7 @@ import {
 import API from "../utils/API";
 import history from "../history";
 
+//Sign in action handler
 export const signIn = userId => {
   return {
     type: SIGN_IN,
@@ -17,18 +19,21 @@ export const signIn = userId => {
   };
 };
 
+//Sign out action handler
 export const signOut = () => {
   return {
     type: SIGN_OUT
   };
 };
 
+//API call action handler - GET request
 export const fetchRestaurants = () => async dispatch => {
   const response = await API.getRestaurants();
 
   dispatch({ type: FETCH_RESTAURANTS, payload: response.data });
 };
 
+//API call action handler - POST request
 export const createRestaurant = formValues => async (dispatch, getState) => {
   const { userId } = getState().auth;
   const response = await API.saveRestaurant({ ...formValues, userId });
@@ -37,6 +42,7 @@ export const createRestaurant = formValues => async (dispatch, getState) => {
   history.push("/");
 };
 
+//API call action handler - GET request with ID parameter
 export const fetchRestaurant = id => async dispatch => {
   const response = await API.getRestaurant(id);
 
@@ -50,6 +56,7 @@ export const fetchRestaurant = id => async dispatch => {
 //   history.push("/");
 // };
 
+//API call action handler - DELETE/DESTROY request
 export const deleteRestaurant = id => async dispatch => {
   await API.deleteRestaurant(id);
 

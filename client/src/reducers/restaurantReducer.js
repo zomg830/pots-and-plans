@@ -1,5 +1,7 @@
+//Importing the lodash library
 import _ from "lodash";
 
+//Importing action handler types
 import {
   FETCH_RESTAURANTS,
   CREATE_RESTAURANT,
@@ -8,6 +10,7 @@ import {
   EDIT_RESTAURANT
 } from "../actions/types";
 
+//Exports the reducer that handles the action with a switch case
 export default (state = {}, action) => {
   switch (action.type) {
     case FETCH_RESTAURANTS:
