@@ -8,6 +8,7 @@ import {
   EDIT_RESTAURANT
 } from "../actions/types";
 
+//This function takes the current state and an action and returns a new state. 
 export default (state = {}, action) => {
   switch (action.type) {
     case FETCH_RESTAURANTS:

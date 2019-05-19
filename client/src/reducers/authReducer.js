@@ -5,6 +5,7 @@ const INITIAL_STATE = {
   userId: null
 };
 
+// This function takes the current state and an action and returns a new state. 
 export default (state = INITIAL_STATE, action) => {
   switch (action.type) {
     case SIGN_IN:
