@@ -46,6 +46,7 @@ export const createRestaurant = formValues => async (dispatch, getState) => {
 };
 
 export const fetchRestaurant = id => async dispatch => {
+  console.log("fetchRestaurant", id);
   const response = await API.getRestaurant(id);
 
   dispatch({ type: FETCH_RESTAURANT, payload: response.data });

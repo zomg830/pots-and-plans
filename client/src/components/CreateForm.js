@@ -8,7 +8,8 @@ class CreateForm extends Component {
 
   onInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-    this.props.changeTitle(e.target.value);
+    if (e.target.name === "restaurantName")
+      this.props.changeTitle(e.target.value);
   };
 
   renderError = component => {

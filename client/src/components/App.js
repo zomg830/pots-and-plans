@@ -5,6 +5,7 @@ import Header from "./Header";
 import LandingView from "../pages/LandingView";
 // import BeginDayView from "../pages/BeginDayView";
 import CreateRestaurantView from "../pages/CreateRestaurantView";
+import DeleteForm from "../components/DeleteForm";
 import NoMatch from "../pages/NoMatch";
 import history from "../history";
 
@@ -27,6 +28,11 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={LandingView} />
               <Route exact path="/create" component={CreateRestaurantView} />
+              <Route
+                path="/restaurants/delete/:id"
+                exact
+                component={DeleteForm}
+              />
               <Route component={NoMatch} />
             </Switch>
           </div>

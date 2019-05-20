@@ -13,7 +13,7 @@ export default (state = {}, action) => {
     case FETCH_RESTAURANTS:
       return { ...state, ..._.mapKeys(action.payload, "_id") };
     case FETCH_RESTAURANT:
-      return { ...state, [action.payload]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
     case CREATE_RESTAURANT:
       return { ...state, [action.payload._id]: action.payload };
     case EDIT_RESTAURANT:
