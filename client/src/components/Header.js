@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 import GoogleAuth from "./GoogleAuth";
+import InstructionsModal from "./InstructionsModal";
 
 const Header = () => {
   return (
@@ -12,6 +13,7 @@ const Header = () => {
       <Link to="/create" style={{ color: "white" }} className="item">
         Create
       </Link>
+      <InstructionsModal />
       <div className="right menu">
         <GoogleAuth />
       </div>

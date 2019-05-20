@@ -35,3 +35,8 @@ body {
   display: block;
   margin: 0 auto;
 }
+
+#instructions {
+  background-color: transparent;
+  border: none;
+}

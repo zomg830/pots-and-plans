@@ -9,6 +9,7 @@ import CreateForm from "../components/CreateForm";
 const CreateRestaurantView = ({ title }) => {
   return (
     <div>
+      
       <Title title={title} />
       <Burger />
       <CreateForm />
