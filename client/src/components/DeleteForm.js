@@ -7,8 +7,15 @@ import history from "../history";
 import { fetchRestaurant, deleteRestaurant } from "../actions";
 
 class RestaurantDelete extends Component {
+  state = { userId: "" };
+
   componentDidMount() {
-    this.props.fetchRestaurant(this.props.match.params.id);
+    this.props.fetchRestaurant(this.props.match.params.id).then(() => {
+      this.setState({
+        userId: this.props.restaurant.userId
+      });
+      console.log(this.props);
+    });
   }
 
   renderContent() {
@@ -40,6 +47,12 @@ class RestaurantDelete extends Component {
   }
 
   render() {
+    if (!this.props.restaurant) {
+      return <div>Loading...</div>;
+    }
+    if (this.props.currentUserId !== this.state.userId) {
+      return <div>You do not have permission to edit this restaurant</div>;
+    }
     return (
       <Modal
         title="Delete Restaurant"
@@ -53,7 +66,8 @@ class RestaurantDelete extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    restaurant: state.restaurants[ownProps.match.params.id]
+    restaurant: state.restaurants[ownProps.match.params.id],
+    currentUserId: state.auth.userId
   };
 };
 

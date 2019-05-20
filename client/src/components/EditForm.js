@@ -10,7 +10,8 @@ class EditForm extends Component {
     this.props.fetchRestaurant(this.props.match.params.id).then(() => {
       this.setState({
         restaurantName: this.props.restaurant.restaurant_name,
-        ownerName: this.props.restaurant.owner_name
+        ownerName: this.props.restaurant.owner_name,
+        userId: this.props.restaurant.userId
       });
     });
   }
@@ -52,6 +53,11 @@ class EditForm extends Component {
     if (!this.props.restaurant) {
       return <div>Loading...</div>;
     }
+
+    if (this.props.currentUserId !== this.state.userId) {
+      return <div>You do not have permission to edit this restaurant</div>;
+    }
+
     return (
       <div className="ui segment">
         <form onSubmit={this.onFormSubmit} className="ui form">
@@ -83,7 +89,10 @@ class EditForm extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-  return { restaurant: state.restaurants[ownProps.match.params.id] };
+  return {
+    restaurant: state.restaurants[ownProps.match.params.id],
+    currentUserId: state.auth.userId
+  };
 };
 
 export default connect(
