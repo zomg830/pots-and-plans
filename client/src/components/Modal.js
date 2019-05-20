@@ -7,6 +7,7 @@ const Modal = props => {
       <div
         onClick={e => e.stopPropagation()}
         className="ui standard modal visible active"
+        style={{ margin: "auto" }}
       >
         <div className="header">{props.title}</div>
         <div className="content">{props.content}</div>
