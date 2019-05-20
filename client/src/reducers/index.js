@@ -17,5 +17,6 @@ See example below:
 
     const store = createStore(reducer);
 
-In this case we will be importing combineREducers */
+In this case, combineREducers have been imported
+SEE index.js stored in client/src forlders*/
 
