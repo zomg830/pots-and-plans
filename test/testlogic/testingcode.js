@@ -2,12 +2,10 @@ var chefSkill = { "burger": 4.5, "hotdog": 2 };
 var orders = ["burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog"];
 var orderEasy = ["hotdog", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog"]
 // we can set the time to the random variable when choosing the random chance issue that could appear and add it to the time that goes inside of the loop, this could be a variable like randomTime
-let time;
+let time= 720;
 var orderTest = ["hotdog", "burger", "hotdog", "burger","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog"]
-
-
 function DayGoesBy(chefSkill, time, orders) {
-    time = 500;
+   
 
     let randomOrder = orders
         // sorts the array randomly
@@ -53,3 +51,5 @@ function DayOver(A, B) {
 DayGoesBy(chefSkill, time, orders);
 DayGoesBy(chefSkill, time, orderEasy);
 DayGoesBy(chefSkill, time, orderTest);
+
+
