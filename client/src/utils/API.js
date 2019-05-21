@@ -15,5 +15,8 @@ export default {
   },
   saveRestaurant: function(restaurantData) {
     return axios.post("/api/restaurants", restaurantData);
+  },
+  editRestaurant: function(id, restaurantData) {
+    return axios.put("/api/restaurants/" + id, restaurantData);
   }
 };

@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import { fetchRestaurants } from "../actions";
 
 class RestaurantList extends Component {
   state = { restaurants: [] };
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.fetchRestaurants();
   }
 
@@ -14,8 +15,18 @@ class RestaurantList extends Component {
     if (restaurant.userId === this.props.currentUserId) {
       return (
         <div className="right floated content">
-          <button className="ui primary button">Edit</button>
-          <button className="ui negative button">Delete</button>
+          <Link
+            to={`/restaurants/edit/${restaurant._id}`}
+            className="ui button primary"
+          >
+            Edit
+          </Link>
+          <Link
+            to={`/restaurants/delete/${restaurant._id}`}
+            className="ui button negative"
+          >
+            Delete
+          </Link>
         </div>
       );
     }
