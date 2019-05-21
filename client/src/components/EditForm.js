@@ -4,15 +4,17 @@ import { connect } from "react-redux";
 import { fetchRestaurant, editRestaurant } from "../actions";
 
 class EditForm extends Component {
-  state = { restaurantName: "", ownerName: "" };
+  state = { restaurantName: null, ownerName: null, userId: null };
 
-  componentDidMount() {
-    this.props.fetchRestaurant(this.props.match.params.id).then(() => {
-      this.setState({
-        restaurantName: this.props.restaurant.restaurant_name,
-        ownerName: this.props.restaurant.owner_name,
-        userId: this.props.restaurant.userId
-      });
+  async componentDidMount() {
+    await this.props.fetchRestaurant(this.props.page);
+    //This allows the restaurant to collect the information before rendering
+    //Without this syntax you will receive a "cannot read property of undefined" error
+
+    this.setState({
+      restaurantName: this.props.restaurant.restaurant_name,
+      ownerName: this.props.restaurant.owner_name,
+      userId: this.props.restaurant.userId
     });
   }
 
@@ -21,7 +23,7 @@ class EditForm extends Component {
   };
 
   onSubmit = formValues => {
-    this.props.editRestaurant(this.props.match.params.id, formValues);
+    this.props.editRestaurant(this.props.page, formValues);
   };
 
   renderError = component => {
@@ -45,12 +47,12 @@ class EditForm extends Component {
         restaurant_name: this.state.restaurantName,
         owner_name: this.state.ownerName
       };
-      this.props.editRestaurant(this.props.match.params.id, restaurantData);
+      this.props.editRestaurant(this.props.page, restaurantData);
     }
   };
 
   render() {
-    if (!this.props.restaurant) {
+    if (!this.props.restaurant || !this.state.userId) {
       return <div>Loading...</div>;
     }
 
@@ -90,7 +92,7 @@ class EditForm extends Component {
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    restaurant: state.restaurants[ownProps.match.params.id],
+    restaurant: state.restaurants[ownProps.page],
     currentUserId: state.auth.userId
   };
 };
