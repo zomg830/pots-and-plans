@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { createRestaurant, changeTitle } from "../actions";
+import { createRestaurant, changeTitle, changeOwnerName } from "../actions";
 
 class CreateForm extends Component {
   state = { restaurantName: "", ownerName: "" };
@@ -10,6 +10,11 @@ class CreateForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.name === "restaurantName")
       this.props.changeTitle(e.target.value);
+  };
+
+  inputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    this.props.changeOwnerName(e.target.value);
   };
 
   renderError = component => {
@@ -55,7 +60,7 @@ class CreateForm extends Component {
               value={this.state.ownerName}
               autoComplete="off"
               name="ownerName"
-              onChange={this.onInputChange}
+              onChange={this.inputChange}
               placeholder={this.renderError("owner")}
             />
           </div>
@@ -74,5 +79,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { createRestaurant, changeTitle }
+  { createRestaurant, changeTitle, changeOwnerName }
 )(CreateForm);

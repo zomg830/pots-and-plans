@@ -19,8 +19,8 @@ function InstructionsModal() {
                     </button>
                 </div>
                 <div className="modal-body">
-                    <h5>You can run a successful food establishment!</h5>
-                    <h6>Be confident & Take risks!</h6>
+                    <p>You can run a successful food establishment!</p>
+                    <p>Be confident & Take risks!</p>
                     <ul>
                         <li>Your goal is to keep your business afloat long enough to break even and make profit.</li>
                         <li>Develop a realistic business plan based on your initial amount/balance.</li>

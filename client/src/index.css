@@ -20,6 +20,14 @@ body {
   font-family: "Press Start 2P", cursive;
   text-shadow: -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red, 2px 2px 0 red;
 }
+
+#ownerName {
+  font-size: 5vw;
+  text-align: center;
+  font-family: "Press Start 2P", cursive;
+  text-shadow: -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red, 2px 2px 0 red;
+}
+
 .button {
   font-size: 3vh;
   background-color: rgb(14, 146, 14);
@@ -39,4 +47,37 @@ body {
 #instructions {
   background-color: transparent;
   border: none;
+}
+
+.modal-header {
+  background-color: black;
+}
+
+.modal-title {
+  color: rgb(238, 44, 44);
+  font-size: 26px !important;
+  text-shadow: -1.5px -1.5px 0 blue, 1.5px -1.5px 0 blue, -1.5px 1.5px 0 blue, 1.5px 1.5px 0 blue;
+}
+
+.modal-body {
+  background-color: black;
+  /* background-image: url("./images/graphicstock.jpg"); */
+  background-image: url("./images/restaurant.gif");
+  background-size: 100%;
+  background-repeat: no-repeat;
+  color: rgb(238, 44, 44);
+  font-size: 23px;
+  text-shadow: -1.5px -1.5px 0 darkblue, 1.5px -1.5px 0 darkblue, -1.5px 1.5px 0 darkblue, 1.5px 1.5px 0 darkblue;
+}
+
+.modal-footer {
+  background-image: url("./images/money.gif");
+  background-size: 20%;
+  background-repeat: repeat-x;
+  height: 100px;
+  background-color: black;
+}
+
+.modal-footer button {
+  background-color: blue;
 }

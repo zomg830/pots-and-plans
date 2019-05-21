@@ -9,6 +9,7 @@ import EditRestaurantView from "../pages/EditRestaurantView";
 import DeleteForm from "../components/DeleteForm";
 import NoMatch from "../pages/NoMatch";
 import history from "../history";
+import BeginDayView from "../pages/BeginDayView";
 
 class App extends React.Component {
   state = {
@@ -29,6 +30,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={LandingView} />
               <Route exact path="/create" component={CreateRestaurantView} />
+              <Route exact path="/test" component={BeginDayView} />
               <Route
                 path="/restaurants/delete/:id"
                 exact
