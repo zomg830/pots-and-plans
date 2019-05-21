@@ -6,11 +6,13 @@ import {
   FETCH_RESTAURANT,
   DELETE_RESTAURANT,
   // EDIT_RESTAURANT,
-  CHANGE_TITLE
+  CHANGE_TITLE,
+  OWNER_NAME
 } from "./types";
 import API from "../utils/API";
 import history from "../history";
 
+//an action is an object with a type & a payload
 export const signIn = userId => {
   return {
     type: SIGN_IN,
@@ -31,12 +33,23 @@ export const changeTitle = str => {
   };
 };
 
+export const changeOwnerName = str => {
+  return {
+    type: OWNER_NAME,
+    payload: str
+  };
+};
+
+// dispatching an action is the only way to update the application state
+// async functions always return a promise
 export const fetchRestaurants = () => async dispatch => {
+  // keyword await makes JavaScript wait until that promise settles and returns its result
   const response = await API.getRestaurants();
 
   dispatch({ type: FETCH_RESTAURANTS, payload: response.data });
 };
 
+// getState method returns the current state
 export const createRestaurant = formValues => async (dispatch, getState) => {
   const { userId } = getState().auth;
   const response = await API.saveRestaurant({ ...formValues, userId });

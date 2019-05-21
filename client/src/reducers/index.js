@@ -2,11 +2,14 @@ import { combineReducers } from "redux";
 import authReducer from "./authReducer";
 import restaurantReducer from "./restaurantReducer";
 import titleReducer from "./titleReducer";
+import ownerReducer from "./ownerReducer";
 
+// reducers listen to every single action that is sent
 export default combineReducers({
   auth: authReducer,
   restaurants: restaurantReducer,
-  title: titleReducer
+  title: titleReducer,
+  addOwnerName: ownerReducer
 });
 
 /* "The store is the soul of Redux.
