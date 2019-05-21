@@ -38,7 +38,9 @@ class RestaurantList extends Component {
         <div className="item" key={restaurant._id}>
           {this.renderAdmin(restaurant)}
           <div className="content">
-            <div className="header">{restaurant.restaurant_name}</div>
+            <Link to={`/restaurants/play/${restaurant._id}`} className="header">
+              {restaurant.restaurant_name}
+            </Link>
             <div className="description">Owner: {restaurant.owner_name}</div>
           </div>
         </div>

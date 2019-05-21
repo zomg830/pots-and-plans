@@ -8,7 +8,6 @@ const BeginDayView = () => {
     <div>
       <Title />
       <p>Placeholder for Begin Day View components</p>
-      <GoogleAuth />
     </div>
   );
 };
