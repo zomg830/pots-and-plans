@@ -5,9 +5,11 @@ import {
   CREATE_RESTAURANT,
   FETCH_RESTAURANT,
   DELETE_RESTAURANT,
+
   // EDIT_RESTAURANT,
   CHANGE_TITLE,
   OWNER_NAME
+
 } from "./types";
 import API from "../utils/API";
 import history from "../history";
@@ -64,12 +66,12 @@ export const fetchRestaurant = id => async dispatch => {
   dispatch({ type: FETCH_RESTAURANT, payload: response.data });
 };
 
-// export const editRestaurant = (id, formValues) => async dispatch => {
-//   const response = await API.patch(`/restaurants/${id}`, formValues);
+export const editRestaurant = (id, formValues) => async dispatch => {
+  const response = await API.editRestaurant(id, { ...formValues });
 
-//   dispatch({ type: EDIT_RESTAURANT, payload: response.data });
-//   history.push("/");
-// };
+  dispatch({ type: EDIT_RESTAURANT, payload: response.data });
+  history.push("/");
+};
 
 export const deleteRestaurant = id => async dispatch => {
   await API.deleteRestaurant(id);
