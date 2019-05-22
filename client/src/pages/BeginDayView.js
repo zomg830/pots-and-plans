@@ -1,4 +1,5 @@
 import React from "react";
+
 import "../index.css";
 import Title from "../components/Title";
 import GoogleAuth from "../components/GoogleAuth";

@@ -7,8 +7,8 @@ import { fetchRestaurants } from "../actions";
 class RestaurantList extends Component {
   state = { restaurants: [] };
 
-  componentWillMount() {
-    this.props.fetchRestaurants();
+  async componentDidMount() {
+    await this.props.fetchRestaurants();
   }
 
   renderAdmin(restaurant) {
