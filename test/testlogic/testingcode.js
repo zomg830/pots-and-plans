@@ -40,6 +40,7 @@ function DayGoesBy(chefSkill, time, orders) {
             return;
         }
 }
+// need to add how to manage orders
 function DayOver(A, B) {
     let burgerSales = A * 3;
     let hotdogSales = B * 2;
