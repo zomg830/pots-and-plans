@@ -8,8 +8,8 @@ import "../index.css";
 class RestaurantList extends Component {
   state = { restaurants: [] };
 
-  componentWillMount() {
-    this.props.fetchRestaurants();
+  async componentDidMount() {
+    await this.props.fetchRestaurants();
   }
 
   renderAdmin(restaurant) {
@@ -40,8 +40,10 @@ class RestaurantList extends Component {
       return (
         <div className="item" key={restaurant._id}>
           {this.renderAdmin(restaurant)}
-          <div className="content" >
-            <div className="header">{restaurant.restaurant_name}</div>
+          <div className="content">
+            <Link to={`/restaurants/play/${restaurant._id}`} className="header">
+              {restaurant.restaurant_name}
+            </Link>
             <div className="description">Owner: {restaurant.owner_name}</div>
           </div>
         </div>

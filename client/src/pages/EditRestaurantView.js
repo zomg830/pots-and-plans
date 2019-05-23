@@ -9,15 +9,11 @@ import EditForm from "../components/EditForm";
 const EditRestaurantView = props => {
   return (
     <div>
-      <Title title={props.title} />
+      <Title title="Edit Restaurant" />
       <Burger />
       <EditForm page={props.match.params.id} />
     </div>
   );
 };
 
-const mapStateToProps = state => {
-  return { title: state.title.title };
-};
-
-export default connect(mapStateToProps)(EditRestaurantView);
+export default EditRestaurantView;
