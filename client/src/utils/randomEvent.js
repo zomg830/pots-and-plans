@@ -1,7 +1,7 @@
 //chooses a random event and returns an object with the results of that event. 
 //the values of this object will be applied to the game loop at the beginning of each day
 
-function randomEvent() {
+export default function randomEvent() {
     let result = {
         time: 0,
         skill: 0,
