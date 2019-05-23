@@ -10,14 +10,17 @@ class RunGame extends React.Component {
     previousBalance: null,
     event: null,
     endingBalance: null,
-    netSales: null
+    netSales: null,
+    userId: null
   };
   //get starting balance from db
   async componentDidMount() {
     await this.props.fetchRestaurant(this.props.id);
+
     this.setState({
       previousBalance: this.props.restaurant.balance,
-      event: "Welcome back!"
+      event: "Welcome back!",
+      userId: this.props.restaurant.userId
     });
   }
 
@@ -83,6 +86,14 @@ class RunGame extends React.Component {
   };
 
   render() {
+    if (!this.props.restaurant || !this.state.userId) {
+      return <div>Loading...</div>;
+    }
+
+    if (this.props.currentUserId !== this.state.userId) {
+      return <div>You do not have permission to play as this restaurant</div>;
+    }
+
     return (
       <div className="ui container">
         <div className="ui horizontal segments">
