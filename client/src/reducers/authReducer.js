@@ -7,8 +7,7 @@ const INITIAL_STATE = {
   userId: null
 };
 
-//Exporting a reducer for to handle the authorization process, default initial state
-//Also called with an action that is handled by a switch case.
+// This function takes the current state and an action and returns a new state.
 export default (state = INITIAL_STATE, action) => {
   //Checks the action type ("SIGN_IN", "SIGN_OUT", etc.)
   switch (action.type) {

@@ -10,13 +10,13 @@ import {
   EDIT_RESTAURANT
 } from "../actions/types";
 
-//Exports the reducer that handles the action with a switch case
+//This function takes the current state and an action and returns a new state.
 export default (state = {}, action) => {
   switch (action.type) {
     case FETCH_RESTAURANTS:
       return { ...state, ..._.mapKeys(action.payload, "_id") };
     case FETCH_RESTAURANT:
-      return { ...state, [action.payload]: action.payload };
+      return { ...state, [action.payload._id]: action.payload };
     case CREATE_RESTAURANT:
       return { ...state, [action.payload._id]: action.payload };
     case EDIT_RESTAURANT:
