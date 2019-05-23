@@ -1,3 +1,4 @@
+//Importing these variables from the types.js file, minimizes risks of typos
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -8,7 +9,6 @@ import {
   EDIT_RESTAURANT,
   CHANGE_TITLE,
   OWNER_NAME
-
 } from "./types";
 import API from "../utils/API";
 import history from "../history";
@@ -21,6 +21,7 @@ export const signIn = userId => {
   };
 };
 
+//Sign out action handler
 export const signOut = () => {
   return {
     type: SIGN_OUT
@@ -59,6 +60,7 @@ export const createRestaurant = formValues => async (dispatch, getState) => {
   history.push("/");
 };
 
+//API call action handler - GET request with ID parameter
 export const fetchRestaurant = id => async dispatch => {
   const response = await API.getRestaurant(id);
 
@@ -72,6 +74,7 @@ export const editRestaurant = (id, formValues) => async dispatch => {
   history.push("/");
 };
 
+//API call action handler - DELETE/DESTROY request
 export const deleteRestaurant = id => async dispatch => {
   await API.deleteRestaurant(id);
 

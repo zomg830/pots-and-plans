@@ -22,4 +22,3 @@ See example below:
 
 In this case, combineREducers have been imported
 SEE index.js stored in client/src forlders*/
-
