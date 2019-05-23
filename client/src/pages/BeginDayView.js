@@ -2,13 +2,15 @@ import React from "react";
 
 import "../index.css";
 import Title from "../components/Title";
-import GoogleAuth from "../components/GoogleAuth";
+import RunGame from "../components/RunGame";
 
-const BeginDayView = () => {
+const BeginDayView = props => {
+  console.log(props);
+  const id = props.match.params.id;
   return (
     <div>
       <Title />
-      <p>Placeholder for Begin Day View components</p>
+      <RunGame id={id} />
     </div>
   );
 };

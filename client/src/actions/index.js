@@ -7,6 +7,7 @@ import {
   FETCH_RESTAURANT,
   DELETE_RESTAURANT,
   EDIT_RESTAURANT,
+  SAVE_RESTAURANT_DAY,
   CHANGE_TITLE,
   OWNER_NAME
 } from "./types";
@@ -72,6 +73,13 @@ export const editRestaurant = (id, formValues) => async dispatch => {
 
   dispatch({ type: EDIT_RESTAURANT, payload: response.data });
   history.push("/");
+};
+
+export const saveRestaurantDay = (id, dayData) => async dispatch => {
+  console.log(dayData);
+  const response = await API.saveRestaurantData(id, { ...dayData });
+
+  dispatch({ type: SAVE_RESTAURANT_DAY, payload: response.data });
 };
 
 //API call action handler - DELETE/DESTROY request

@@ -23,7 +23,23 @@ module.exports = {
       .catch(err => res.status(422).json(err));
   },
   update: function(req, res) {
+    console.log("MongoUpdate", req.body);
+
     db.Restaurant.findOneAndUpdate({ _id: req.params.id }, req.body)
+      .then(dbModel => res.json(dbModel))
+      .catch(err => res.status(422).json(err));
+  },
+  updateDayData: function(req, res) {
+    console.log("MongoUpdate", req.body);
+    db.Restaurant.findOneAndUpdate(
+      { _id: req.params.id },
+      {
+        $set: { dayData: req.body, balance: req.body.newBalance }
+      },
+      {
+        new: true
+      }
+    )
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },
