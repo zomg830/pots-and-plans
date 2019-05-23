@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { fetchRestaurants } from "../actions";
+import "../index.css";
 
 class RestaurantList extends Component {
   state = { restaurants: [] };
@@ -18,12 +19,14 @@ class RestaurantList extends Component {
           <Link
             to={`/restaurants/edit/${restaurant._id}`}
             className="ui button primary"
+            id="editRestaurantList"
           >
             Edit
           </Link>
           <Link
             to={`/restaurants/delete/${restaurant._id}`}
             className="ui button negative"
+            id="deleteRestaurantList"
           >
             Delete
           </Link>
@@ -37,7 +40,7 @@ class RestaurantList extends Component {
       return (
         <div className="item" key={restaurant._id}>
           {this.renderAdmin(restaurant)}
-          <div className="content">
+          <div className="content" >
             <div className="header">{restaurant.restaurant_name}</div>
             <div className="description">Owner: {restaurant.owner_name}</div>
           </div>
