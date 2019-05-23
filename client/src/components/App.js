@@ -16,11 +16,6 @@ class App extends React.Component {
   };
 
   render() {
-    // if (this.state.isSignedIn === false){
-    //   return(<LandingView />)
-    // }
-    //else if the user has not created a restaurant yet, go to Create Restaurant view
-    //else if (!restaurantCreated){
     return (
       <div className="ui container">
         <Router history={history}>
@@ -29,6 +24,7 @@ class App extends React.Component {
             <Switch>
               <Route exact path="/" component={LandingView} />
               <Route exact path="/create" component={CreateRestaurantView} />
+              <Route exact path="/test" component={BeginDayView} />
               <Route
                 path="/restaurants/delete/:id"
                 exact
@@ -50,10 +46,6 @@ class App extends React.Component {
         </Router>
       </div>
     );
-    // }
-    // else{
-    // return (<BeginDayView />)
-    // }
   }
 }
 

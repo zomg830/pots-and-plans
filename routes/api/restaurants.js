@@ -10,6 +10,7 @@ router
   .route("/:id")
   .get(restaurantsController.findById)
   .put(restaurantsController.update)
+  .patch(restaurantsController.updateDayData)
   .delete(restaurantsController.remove);
 
 module.exports = router;

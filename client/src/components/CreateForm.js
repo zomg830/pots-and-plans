@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { createRestaurant, changeTitle } from "../actions";
+import { createRestaurant, changeTitle, changeOwnerName } from "../actions";
 
 class CreateForm extends Component {
   state = { restaurantName: "", ownerName: "" };
@@ -10,6 +10,11 @@ class CreateForm extends Component {
     this.setState({ [e.target.name]: e.target.value });
     if (e.target.name === "restaurantName")
       this.props.changeTitle(e.target.value);
+  };
+
+  inputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+    this.props.changeOwnerName(e.target.value);
   };
 
   renderError = component => {
@@ -34,11 +39,13 @@ class CreateForm extends Component {
         owner_name: this.state.ownerName
       };
       this.props.createRestaurant(restaurantData);
+      this.props.changeTitle("");
+      this.props.changeOwnerName("");
     }
   };
 
   render() {
-    return (
+    return this.props.currentUserId ? (
       <div className="ui segment">
         <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="ui field">
@@ -55,7 +62,7 @@ class CreateForm extends Component {
               value={this.state.ownerName}
               autoComplete="off"
               name="ownerName"
-              onChange={this.onInputChange}
+              onChange={this.inputChange}
               placeholder={this.renderError("owner")}
             />
           </div>
@@ -64,15 +71,17 @@ class CreateForm extends Component {
           </button>
         </form>
       </div>
+    ) : (
+      <div>Please sign in to create a restaurant</div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { userId: state.auth.userId };
+  return { userId: state.auth.userId, currentUserId: state.auth.userId };
 };
 
 export default connect(
   mapStateToProps,
-  { createRestaurant, changeTitle }
+  { createRestaurant, changeTitle, changeOwnerName }
 )(CreateForm);

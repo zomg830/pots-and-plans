@@ -3,6 +3,7 @@ import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { fetchRestaurants } from "../actions";
+import "../index.css";
 
 class RestaurantList extends Component {
   state = { restaurants: [] };
@@ -18,12 +19,14 @@ class RestaurantList extends Component {
           <Link
             to={`/restaurants/edit/${restaurant._id}`}
             className="ui button primary"
+            id="editRestaurantList"
           >
             Edit
           </Link>
           <Link
             to={`/restaurants/delete/${restaurant._id}`}
             className="ui button negative"
+            id="deleteRestaurantList"
           >
             Delete
           </Link>
