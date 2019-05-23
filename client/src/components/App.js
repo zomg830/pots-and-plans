@@ -9,7 +9,6 @@ import EditRestaurantView from "../pages/EditRestaurantView";
 import DeleteForm from "../components/DeleteForm";
 import NoMatch from "../pages/NoMatch";
 import history from "../history";
-import BeginDayView from "../pages/BeginDayView";
 
 class App extends React.Component {
   state = {
@@ -42,7 +41,7 @@ class App extends React.Component {
                 component={EditRestaurantView}
               />
               <Route
-                path="/restaurants/play/:id"
+                path="/restaurants/play/:id/:name"
                 exact
                 component={BeginDayView}
               />

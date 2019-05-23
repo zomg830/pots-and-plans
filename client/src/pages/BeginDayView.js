@@ -5,11 +5,15 @@ import Title from "../components/Title";
 import GoogleAuth from "../components/GoogleAuth";
 
 const BeginDayView = () => {
+  //grabbed the name of the restaurant from the url
+  let name = window.location.href;
+  name = name.split('/');
+  name = name[6];
+  console.log(name);
+
   return (
-    <div>
-      <Title />
-      <p>Placeholder for Begin Day View components</p>
-    </div>
+    <Title title={name}/>
   );
 };
+
 export default BeginDayView;
