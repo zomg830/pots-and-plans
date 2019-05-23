@@ -33,10 +33,14 @@ body {
   background-color: rgb(14, 146, 14);
   display: block;
   margin: 40px auto;
-  width: 200px;
+  width: auto;
   border: none;
   padding: 10px;
   font-family: "Press Start 2P", cursive;
+}
+
+.google.button {
+  width: 200px;
 }
 #burger-img {
   width: 20vw;
@@ -81,3 +85,34 @@ body {
 .modal-footer button {
   background-color: blue;
 }
+
+#editRestaurantList {
+  background-image: url("./images/greenPixels.jpg");
+  font-family: "Press Start 2P", cursive;
+}
+
+#deleteRestaurantList {
+  background-image: url("./images/redBlack.jpg");
+  font-family: "Press Start 2P", cursive;
+  
+}
+
+.ui.segment {
+  /* background-color: brown;
+  background-image: url("./images/bluePurple.jpeg"); */
+  background-color: transparent;
+}
+
+.description {
+  color: white !important;
+  font-family: "Press Start 2P", cursive;
+
+}
+
+.header {
+  color: white !important;
+  font-size: 30px;
+  margin-bottom: 12px !important;
+  margin-top: 6px;
+}
+
