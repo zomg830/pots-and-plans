@@ -9,7 +9,6 @@ import EditRestaurantView from "../pages/EditRestaurantView";
 import DeleteForm from "../components/DeleteForm";
 import NoMatch from "../pages/NoMatch";
 import history from "../history";
-import BeginDayView from "../pages/BeginDayView";
 
 class App extends React.Component {
   state = {
