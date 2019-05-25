@@ -6,7 +6,16 @@ const restaurantSchema = new Schema({
   owner_name: { type: String, required: true },
   balance: { type: Number, required: true, default: 10000 },
   userId: String,
-  date: { type: Date, default: Date.now }
+  date: { type: Date, default: Date.now },
+  dayData: {
+    time: { type: Number },
+    chefSkill: {
+      burger: { type: Number },
+      hotdog: { type: Number }
+    },
+    newBalance: { type: Number },
+    previousBalance: { type: Number }
+  }
 });
 
 const Restaurant = mongoose.model("Restaurant", restaurantSchema);

@@ -1,15 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
+
 import "../index.css";
 import Title from "../components/Title";
-import GoogleAuth from "../components/GoogleAuth";
+import RunGame from "../components/RunGame";
 
-const BeginDayView = () => {
+const BeginDayView = props => {
+  console.log(props.restaurant);
+  const id = props.match.params.id;
   return (
     <div>
-      <Title />
-      <p>Placeholder for Begin Day View components</p>
-      <GoogleAuth />
+      <Title
+        title={!props.restaurant ? null : props.restaurant.restaurant_name}
+      />
+      <RunGame id={id} />
     </div>
   );
 };
-export default BeginDayView;
+
+const mapStateToProps = (state, ownProps) => {
+  return {
+    restaurant: state.restaurants[ownProps.match.params.id]
+  };
+};
+
+export default connect(mapStateToProps)(BeginDayView);
+

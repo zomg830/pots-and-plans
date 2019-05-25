@@ -1,20 +1,29 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { createRestaurant, changeTitle, changeOwnerName } from "../actions";
+import { fetchRestaurant, editRestaurant } from "../actions";
 
-class CreateForm extends Component {
-  state = { restaurantName: "", ownerName: "" };
+class EditForm extends Component {
+  state = { restaurantName: null, ownerName: null, userId: null };
+
+  async componentDidMount() {
+    await this.props.fetchRestaurant(this.props.page);
+    //This allows the restaurant to collect the information before rendering
+    //Without this syntax you will receive a "cannot read property of undefined" error
+
+    this.setState({
+      restaurantName: this.props.restaurant.restaurant_name,
+      ownerName: this.props.restaurant.owner_name,
+      userId: this.props.restaurant.userId
+    });
+  }
 
   onInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
-    if (e.target.name === "restaurantName")
-      this.props.changeTitle(e.target.value);
   };
 
-  inputChange = e => {
-    this.setState({ [e.target.name]: e.target.value });
-    this.props.changeOwnerName(e.target.value);
+  onSubmit = formValues => {
+    this.props.editRestaurant(this.props.page, formValues);
   };
 
   renderError = component => {
@@ -38,14 +47,20 @@ class CreateForm extends Component {
         restaurant_name: this.state.restaurantName,
         owner_name: this.state.ownerName
       };
-      this.props.createRestaurant(restaurantData);
-      this.props.changeTitle("");
-      this.props.changeOwnerName("");
+      this.props.editRestaurant(this.props.page, restaurantData);
     }
   };
 
   render() {
-    return this.props.currentUserId ? (
+    if (!this.props.restaurant || !this.state.userId) {
+      return <div>Loading...</div>;
+    }
+
+    if (this.props.currentUserId !== this.state.userId) {
+      return <div>You do not have permission to edit this restaurant</div>;
+    }
+
+    return (
       <div className="ui segment">
         <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="ui field">
@@ -62,7 +77,7 @@ class CreateForm extends Component {
               value={this.state.ownerName}
               autoComplete="off"
               name="ownerName"
-              onChange={this.inputChange}
+              onChange={this.onInputChange}
               placeholder={this.renderError("owner")}
             />
           </div>
@@ -71,17 +86,18 @@ class CreateForm extends Component {
           </button>
         </form>
       </div>
-    ) : (
-      <div>Please sign in to create a restaurant</div>
     );
   }
 }
 
-const mapStateToProps = state => {
-  return { userId: state.auth.userId, currentUserId: state.auth.userId };
+const mapStateToProps = (state, ownProps) => {
+  return {
+    restaurant: state.restaurants[ownProps.page],
+    currentUserId: state.auth.userId
+  };
 };
 
 export default connect(
   mapStateToProps,
-  { createRestaurant, changeTitle, changeOwnerName }
-)(CreateForm);
+  { fetchRestaurant, editRestaurant }
+)(EditForm);

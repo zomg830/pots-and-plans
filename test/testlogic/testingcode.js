@@ -1,12 +1,17 @@
-var chefSkill = { "burger": 4.5, "hotdog": 2 };
+import API from '....'
+
+var chefSkill = {  };
 var orders = ["burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog"];
 var orderEasy = ["hotdog", "burger", "burger", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog", "hotdog"]
 // we can set the time to the random variable when choosing the random chance issue that could appear and add it to the time that goes inside of the loop, this could be a variable like randomTime
-let time= 720;
-var orderTest = ["hotdog", "burger", "hotdog", "burger","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog"]
-function DayGoesBy(chefSkill, time, orders) {
-   
 
+var orderTest = ["hotdog", "burger", "hotdog", "burger","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog","hotdog"]
+
+//get starting balance from db 
+function DayGoesBy(chefSkill, time, orders, balance, r) {
+    let time = 720 + r.time
+    let chefSkill = {"burger": 4.5 + r.skill, "hotdog": 2 + r.skill};
+    let newBalance = balance + r.balance;
     let randomOrder = orders
         // sorts the array randomly
         .sort(function () {
@@ -39,6 +44,9 @@ function DayGoesBy(chefSkill, time, orders) {
             DayOver(orderA, orderB);
             return;
         }
+
+        //update db with newBalance
+
 }
 // need to add how to manage orders
 function DayOver(A, B) {
@@ -49,7 +57,7 @@ function DayOver(A, B) {
     console.log("Total hot-dogs sold: " + B);
     console.log("The total sales are: $" + totalSales);
 }
-DayGoesBy(chefSkill, time, orders);
+DayGoesBy(chefSkill, time, orders, randomEvent());
 DayGoesBy(chefSkill, time, orderEasy);
 DayGoesBy(chefSkill, time, orderTest);
 

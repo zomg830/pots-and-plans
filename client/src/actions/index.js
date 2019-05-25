@@ -1,3 +1,4 @@
+//Importing these variables from the types.js file, minimizes risks of typos
 import {
   SIGN_IN,
   SIGN_OUT,
@@ -5,12 +6,15 @@ import {
   CREATE_RESTAURANT,
   FETCH_RESTAURANT,
   DELETE_RESTAURANT,
-  // EDIT_RESTAURANT,
-  CHANGE_TITLE
+  EDIT_RESTAURANT,
+  SAVE_RESTAURANT_DAY,
+  CHANGE_TITLE,
+  OWNER_NAME
 } from "./types";
 import API from "../utils/API";
 import history from "../history";
 
+//an action is an object with a type & a payload
 export const signIn = userId => {
   return {
     type: SIGN_IN,
@@ -18,6 +22,7 @@ export const signIn = userId => {
   };
 };
 
+//Sign out action handler
 export const signOut = () => {
   return {
     type: SIGN_OUT
@@ -31,12 +36,23 @@ export const changeTitle = str => {
   };
 };
 
+export const changeOwnerName = str => {
+  return {
+    type: OWNER_NAME,
+    payload: str
+  };
+};
+
+// dispatching an action is the only way to update the application state
+// async functions always return a promise
 export const fetchRestaurants = () => async dispatch => {
+  // keyword await makes JavaScript wait until that promise settles and returns its result
   const response = await API.getRestaurants();
 
   dispatch({ type: FETCH_RESTAURANTS, payload: response.data });
 };
 
+// getState method returns the current state
 export const createRestaurant = formValues => async (dispatch, getState) => {
   const { userId } = getState().auth;
   const response = await API.saveRestaurant({ ...formValues, userId });
@@ -45,19 +61,28 @@ export const createRestaurant = formValues => async (dispatch, getState) => {
   history.push("/");
 };
 
+//API call action handler - GET request with ID parameter
 export const fetchRestaurant = id => async dispatch => {
   const response = await API.getRestaurant(id);
 
   dispatch({ type: FETCH_RESTAURANT, payload: response.data });
 };
 
-// export const editRestaurant = (id, formValues) => async dispatch => {
-//   const response = await API.patch(`/restaurants/${id}`, formValues);
+export const editRestaurant = (id, formValues) => async dispatch => {
+  const response = await API.editRestaurant(id, { ...formValues });
 
-//   dispatch({ type: EDIT_RESTAURANT, payload: response.data });
-//   history.push("/");
-// };
+  dispatch({ type: EDIT_RESTAURANT, payload: response.data });
+  history.push("/");
+};
 
+export const saveRestaurantDay = (id, dayData) => async dispatch => {
+  console.log(dayData);
+  const response = await API.saveRestaurantData(id, { ...dayData });
+
+  dispatch({ type: SAVE_RESTAURANT_DAY, payload: response.data });
+};
+
+//API call action handler - DELETE/DESTROY request
 export const deleteRestaurant = id => async dispatch => {
   await API.deleteRestaurant(id);
 
