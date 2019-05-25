@@ -24,7 +24,8 @@ class RunGame extends React.Component {
     });
   }
 
-  dayGoesBy(orders, r) {
+  dayGoesBy(r) {
+    let orders = orders();
     let randomObj = r();
     this.setState({
       previousBalance: this.props.restaurant.balance,
@@ -39,26 +40,21 @@ class RunGame extends React.Component {
       newBalance: this.props.restaurant.balance + randomObj.balance,
       previousBalance: this.props.restaurant.balance
     };
-    let randomOrder = orders
-      // sorts the array randomly
-      .sort(function() {
-        return 0.5 - Math.random();
-      });
     // console.log(randomOrder);
     let burgersSold = 0;
     let hotDogsSold = 0;
-    for (let i = 0; i < randomOrder.length; i++) {
+    for (let i = 0; i < orders.length; i++) {
       // the loop is not ending whenever it gets over the length of the array.
       // console.log(randomOrder[i]);
       if (
-        randomOrder[i] === "burger" &&
+        orders[i] === "burger" &&
         dayData.time > dayData.chefSkill.burger
       ) {
         dayData.time -= dayData.chefSkill.burger * 3;
         burgersSold++;
       }
       if (
-        randomOrder[i] === "hotdog" &&
+        orders[i] === "hotdog" &&
         dayData.time > dayData.chefSkill.hotdog
       ) {
         dayData.time -= dayData.chefSkill.hotdog * 3;
