@@ -1,9 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import { Link } from "react-router-dom";
 
 import orders from "../utils/orders";
 import r from "../utils/randomEvent";
 import { saveRestaurantDay, fetchRestaurant } from "../actions";
+import Modal from "../components/Modal";
 
 class RunGame extends React.Component {
   state = {
@@ -85,6 +87,39 @@ class RunGame extends React.Component {
     });
   };
 
+  renderModalContent = () => {
+    return "Select a starting location";
+  };
+
+  renderModalActions = () => {
+    const id = this.props.id;
+
+    return (
+      <React.Fragment>
+        <button
+          onClick={() =>
+            this.props.saveRestaurantDay(this.props.id, {
+              location: "Food Truck"
+            })
+          }
+          className="ui button negative"
+        >
+          Food Truck
+        </button>
+        <button
+          className="ui button"
+          onClick={() =>
+            this.props.saveRestaurantDay(this.props.id, {
+              location: "Restaurant"
+            })
+          }
+        >
+          Restaurant
+        </button>
+      </React.Fragment>
+    );
+  };
+
   render() {
     if (!this.props.restaurant || !this.state.userId) {
       return <div>Loading...</div>;
@@ -92,6 +127,16 @@ class RunGame extends React.Component {
 
     if (this.props.currentUserId !== this.state.userId) {
       return <div>You do not have permission to play as this restaurant</div>;
+    }
+
+    if (!this.props.restaurant.location) {
+      return (
+        <Modal
+          title="Select a Location"
+          content={this.renderModalContent()}
+          actions={this.renderModalActions()}
+        />
+      );
     }
 
     return (
@@ -132,4 +177,3 @@ export default connect(
   mapStateToProps,
   { saveRestaurantDay, fetchRestaurant }
 )(RunGame);
-

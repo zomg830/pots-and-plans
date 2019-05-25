@@ -6,6 +6,7 @@ const restaurantSchema = new Schema({
   owner_name: { type: String, required: true },
   balance: { type: Number, required: true, default: 10000 },
   userId: String,
+  location: String,
   date: { type: Date, default: Date.now },
   dayData: {
     time: { type: Number },

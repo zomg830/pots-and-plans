@@ -15,7 +15,9 @@ const Modal = props => {
           height: "auto"
         }}
       >
-        <div className="header">{props.title}</div>
+        <div className="header" style={{ color: "black" }}>
+          {props.title}
+        </div>
         <div className="content">{props.content}</div>
         <div className="actions">{props.actions}</div>
       </div>
