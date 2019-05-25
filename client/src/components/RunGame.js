@@ -21,34 +21,37 @@ class RunGame extends React.Component {
       userId: this.props.restaurant.userId
     });
   }
+   randomGenerator() {
+    return Math.floor(Math.random() * (100-50) + 50);
+  }
   
- 
   randomArray = () => {
     let array = [];
-    let randomOne = Math.floor(Math.random() * 101);
-    let randomTwo = Math.floor(Math.random() * 101);
+    let randomOne = this.randomGenerator();
+    let randomTwo = this.randomGenerator();
     for (let i = 0; i < randomOne; i++) {
       array.push("burger");
     }
     for (let i = 0; i < randomTwo; i++) {
       array.push("hotdog");
     }
-    console.log(array.length);
     return array;
   }
   
 
   dayGoesBy(r,id) {
+    
     let orders = this.randomArray();
     let randomObj = r();
     this.setState({
+      // getting the current balance listed on the DB
       previousBalance: this.props.restaurant.balance,
       event: randomObj.message
     });
     let dayData = {
       time: 720 + randomObj.time,
       chefSkill: {
-        burger: 4.5 + randomObj.skill,
+        burger: 5 + randomObj.skill,
         hotdog: 2 + randomObj.skill
       },
       newBalance: this.props.restaurant.balance + randomObj.balance,
@@ -60,31 +63,38 @@ class RunGame extends React.Component {
     for (let i = 0; i < orders.length; i++) {
       // the loop is not ending whenever it gets over the length of the array.
       // console.log(randomOrder[i]);
+      
       if (
         orders[i] === "burger" &&
         dayData.time > dayData.chefSkill.burger
       ) {
-        dayData.time -= dayData.chefSkill.burger * 3;
-        burgersSold++;
+        dayData.time -= dayData.chefSkill.burger;
+        burgersSold++; 
       }
       if (
         orders[i] === "hotdog" &&
-        dayData.time > dayData.chefSkill.hotdog
+        dayData.time > dayData.chefSkill.hotdog  
       ) {
-        dayData.time -= dayData.chefSkill.hotdog * 3;
+        dayData.time -= dayData.chefSkill.hotdog;
         hotDogsSold++;
       }
+      if (dayData.time <= 0) {
+        return this.dayOver(burgersSold, hotDogsSold, dayData);
+      }
     }
-    if (dayData.time <= 0) {
-      this.dayOver(burgersSold, hotDogsSold, dayData);
-    }
+    this.dayOver(burgersSold, hotDogsSold, dayData);
+  //   else {
+  //     console.log(dayData.time);
+  //     this.dayOver(burgersSold, hotDogsSold);
+      
+  // }
 
     //update db with newBalance
     //pass in id, restaurant data
   }
 
   dayOver = (burgers, hotdogs, dayData) => {
-    let burgerSales = burgers * 3;
+    let burgerSales = burgers * 7;
     let hotdogSales = hotdogs * 2;
     let totalSales = burgerSales + hotdogSales;
     dayData.newBalance += totalSales;
@@ -120,7 +130,7 @@ class RunGame extends React.Component {
             <p>Ending Balance: ${this.state.endingBalance}</p>
           </div>
           <div className="ui segment">
-            <p>Net Sales: ${this.state.netSales}</p>
+            <p>Total Profit: ${this.state.netSales}</p>
           </div>
         </div>
         <button onClick={() => this.dayGoesBy(r, this.props.id)}>
