@@ -132,3 +132,4 @@ export default connect(
   mapStateToProps,
   { saveRestaurantDay, fetchRestaurant }
 )(RunGame);
+

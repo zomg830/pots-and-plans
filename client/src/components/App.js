@@ -36,7 +36,7 @@ class App extends React.Component {
                 component={EditRestaurantView}
               />
               <Route
-                path="/restaurants/play/:id"
+                path="/restaurants/play/:id/:name"
                 exact
                 component={BeginDayView}
               />
