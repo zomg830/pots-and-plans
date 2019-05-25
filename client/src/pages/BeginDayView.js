@@ -1,19 +1,28 @@
 import React from "react";
+import { connect } from "react-redux";
 
 import "../index.css";
 import Title from "../components/Title";
-import GoogleAuth from "../components/GoogleAuth";
+import RunGame from "../components/RunGame";
 
-const BeginDayView = () => {
-  //grabbed the name of the restaurant from the url
-  let name = window.location.href;
-  name = name.split('/');
-  name = name[6];
-  console.log(name);
-
+const BeginDayView = props => {
+  console.log(props.restaurant);
+  const id = props.match.params.id;
   return (
-    <Title title={name}/>
+    <div>
+      <Title
+        title={!props.restaurant ? null : props.restaurant.restaurant_name}
+      />
+      <RunGame id={id} />
+    </div>
   );
 };
 
-export default BeginDayView;
+const mapStateToProps = (state, ownProps) => {
+  return {
+    restaurant: state.restaurants[ownProps.match.params.id]
+  };
+};
+
+export default connect(mapStateToProps)(BeginDayView);
+

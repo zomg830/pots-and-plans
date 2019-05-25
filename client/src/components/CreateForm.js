@@ -39,14 +39,13 @@ class CreateForm extends Component {
         owner_name: this.state.ownerName
       };
       this.props.createRestaurant(restaurantData);
-      //set title & owner name back to their default values
       this.props.changeTitle("");
       this.props.changeOwnerName("");
     }
   };
 
   render() {
-    return (
+    return this.props.currentUserId ? (
       <div className="ui segment">
         <form onSubmit={this.onFormSubmit} className="ui form">
           <div className="ui field">
@@ -72,12 +71,14 @@ class CreateForm extends Component {
           </button>
         </form>
       </div>
+    ) : (
+      <div>Please sign in to create a restaurant</div>
     );
   }
 }
 
 const mapStateToProps = state => {
-  return { userId: state.auth.userId };
+  return { userId: state.auth.userId, currentUserId: state.auth.userId };
 };
 
 export default connect(

@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 
 import Burger from "../components/Burger";
 import "../index.css";
