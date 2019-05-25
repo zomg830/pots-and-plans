@@ -39,6 +39,9 @@ class CreateForm extends Component {
         owner_name: this.state.ownerName
       };
       this.props.createRestaurant(restaurantData);
+      //set title & owner name back to their default values
+      this.props.changeTitle("");
+      this.props.changeOwnerName("");
     }
   };
 

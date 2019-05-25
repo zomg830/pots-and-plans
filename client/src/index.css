@@ -15,14 +15,14 @@ body {
 } */
 
 #title {
-  font-size: 5vw;
+  font-size: 4vw;
   text-align: center;
   font-family: "Press Start 2P", cursive;
   text-shadow: -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red, 2px 2px 0 red;
 }
 
 #ownerName {
-  font-size: 5vw;
+  font-size: 3vw;
   text-align: center;
   font-family: "Press Start 2P", cursive;
   text-shadow: -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red, 2px 2px 0 red;
