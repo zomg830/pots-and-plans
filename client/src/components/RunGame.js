@@ -3,6 +3,8 @@ import { connect } from "react-redux";
 import r from "../utils/randomEvent";
 import { saveRestaurantDay, fetchRestaurant } from "../actions";
 
+import dollarSign from "../images/dollarSign.gif";
+
 class RunGame extends React.Component {
   state = {
     previousBalance: null,
@@ -115,8 +117,48 @@ class RunGame extends React.Component {
     }
 
     return (
-      <div className="ui container">
-        <div className="ui horizontal segments">
+      <div className="ui container" >
+      {/* test code: create sales report */}
+        <div id="container" className="row justify-content-md-center">
+          <div className="col col-md-2">
+            <img src={ dollarSign } alt="burger" id="dollarSign-img"/>   
+          </div>
+          <div className="col-md-auto">
+            <p id="balance">Opening Balance:</p> 
+            <p id="prevBalance">${this.state.previousBalance}</p>
+          </div>
+          <div className="col col-md-2">
+            <img src={ dollarSign } alt="dollar sign" id="dollarSign-img"/>  
+          </div>
+        </div>
+        {/* second row */}
+        <div id="wrapper" className="row justify-content-md-center">
+          <div id="dailyMssg" className="col-5">
+            <p className="dailyMssg">Daily Message:{" "}</p>
+            <br/>
+            <p>{!this.state.event ? "Nothing today!" : this.state.event}</p>
+          </div>
+          <div className="col-3">
+              <p className="totalProfit">Total Profit: </p>
+              <p className="profitAmnt">${this.state.netSales}</p>
+          </div>
+          <div className="col-4">
+            <div className="endingBalance">
+              <p className="endBalance">Ending Balance: </p>
+              <p className="endingAmnt">${this.state.endingBalance}</p>
+            </div>
+          </div>
+        </div>
+        <button className="runGame" onClick={() => this.dayGoesBy(r, this.props.id)}>
+          Run Game
+        </button>         
+      </div>
+    );
+  }
+}   
+
+        {/* ============= PREVIOUS CODE TO BE DELETED ============ */}
+        {/* <div className="ui horizontal segments">
           <div className="ui segment">
             <p>Previous Balance: ${this.state.previousBalance}</p>
           </div>
@@ -132,14 +174,8 @@ class RunGame extends React.Component {
           <div className="ui segment">
             <p>Total Profit: ${this.state.netSales}</p>
           </div>
-        </div>
-        <button onClick={() => this.dayGoesBy(r, this.props.id)}>
-          Run Game
-        </button>
-      </div>
-    );
-  }
-}
+        </div> */}
+   
 
 const mapStateToProps = (state, ownProps) => {
   return {
