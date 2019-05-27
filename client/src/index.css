@@ -48,6 +48,13 @@ body {
   margin: 0 auto;
 }
 
+h2 {
+  font-size: 3vw;
+  text-align: center;
+  font-family: "Press Start 2P", cursive;
+  text-shadow: -2px -2px 0 red, 2px -2px 0 red, -2px 2px 0 red, 2px 2px 0 red;
+}
+
 #instructions {
   background-color: transparent;
   border: none;
@@ -93,26 +100,111 @@ body {
 
 #deleteRestaurantList {
   background-image: url("./images/redBlack.jpg");
-  font-family: "Press Start 2P", cursive;
-  
+  font-family: "Press Start 2P", cursive; 
 }
 
 .ui.segment {
-  /* background-color: brown;
-  background-image: url("./images/bluePurple.jpeg"); */
   background-color: transparent;
 }
 
 .description {
   color: white !important;
   font-family: "Press Start 2P", cursive;
-
 }
 
 .header {
   color: white !important;
-  font-size: 30px;
-  margin-bottom: 12px !important;
-  margin-top: 6px;
+  font-size: 25px;
+  margin-bottom: 18px !important;
+  font-family: "Press Start 2P", cursive !important;
 }
 
+.ui.horizontal.segments {
+  background-color: aquamarine;
+  font-family: "Press Start 2P", cursive;
+}
+
+#balance {
+  text-align: center;
+  font-family: "Press Start 2P", cursive;
+  color: rgb(6, 190, 190);
+  color: yellow;
+  font-size: 2.5vw;
+  text-shadow: -1.5px -1.5px 0 rgb(6, 190, 190), 1.5px -1.5px 0 rgb(6, 190, 190), -1.5px 1.5px 0 rgb(6, 190, 190), 1.5px 1.5px 0 rgb(6, 190, 190);
+}
+
+#prevBalance {
+  text-align: center;
+  font-family: "Press Start 2P", cursive;
+  color: red;
+  font-size: 2vw;
+  text-shadow: -1.5px -1.5px 0 yellow, 1.5px -1.5px 0 yellow, -1.5px 1.5px 0 yellow, 1.5px 1.5px 0 yellow;
+}
+
+#dollarSign-img {
+  height: 3vw;
+}
+
+#container {
+  margin-top: 35px;
+  margin-bottom: 30px;
+}
+
+#wrapper {
+  margin-top: 40px;
+}
+
+
+#dailyMssg {
+  /* height: 100px; */
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.5vw;
+  color: rgb(0, 140, 255);
+  text-align: center;
+  /* padding: 30px; */
+}
+
+.dailyMssg {
+  /* height: 100px; */
+  font-family: "Press Start 2P", cursive;
+  font-size: 1.5vw;
+  color: rgb(40, 22, 201);
+  text-align: center;
+}
+
+.totalProfit {
+  color: red;
+  font-size: 1.5vw;
+  font-family: "Press Start 2P", cursive;
+}
+
+.profitAmnt{
+  font-size: 2vw;
+  font-family: "Press Start 2P", cursive;
+  text-shadow: -1.5px -1.5px 0 yellow, 1.5px -1.5px 0 yellow, -1.5px 1.5px 0 yellow, 1.5px 1.5px 0 yellow;
+}
+
+.endBalance {
+  font-family: "Press Start 2P", cursive;
+  color: rgb(40, 22, 201);
+  color: red;
+  font-size: 1.5vw;
+}
+
+.endingAmnt {
+  font-size: 2vw; 
+  font-family: "Press Start 2P", cursive;
+  text-shadow: -1.5px -1.5px 0 yellow, 1.5px -1.5px 0 yellow, -1.5px 1.5px 0 yellow, 1.5px 1.5px 0 yellow;
+}
+
+.runGame {
+  color: black;
+  width: auto;
+  font-size: 2vw;
+  display: block;
+  margin: 40px auto;
+  border: none;
+  padding: 10px;
+  font-family: "Press Start 2P", cursive;
+  background-image: url("./images/greenPixels.jpg");
+}
