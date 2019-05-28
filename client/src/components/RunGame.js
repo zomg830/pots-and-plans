@@ -13,7 +13,7 @@ class RunGame extends React.Component {
     userId: null
   };
   //get starting balance from db
-  async componentDidMount() {
+  async componentWillMount() {
     await this.props.fetchRestaurant(this.props.id);
     this.setState({
       event: "Welcome back!",
@@ -101,24 +101,26 @@ class RunGame extends React.Component {
     return (
       <React.Fragment>
         <button
-          onClick={() =>
+          onClick={() => {
             this.props.saveRestaurantDay(this.props.id, {
               location: "Food Truck",
               balance: this.props.restaurant.balance - 2500
-            })
-          }
+            });
+            window.location.reload();
+          }}
           className="ui button negative"
         >
           Food Truck
         </button>
         <button
           className="ui button"
-          onClick={() =>
+          onClick={() => {
             this.props.saveRestaurantDay(this.props.id, {
               location: "Restaurant",
               balance: this.props.restaurant.balance - 5000
-            })
-          }
+            });
+            window.location.reload();
+          }}
         >
           Restaurant
         </button>
