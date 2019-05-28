@@ -31,9 +31,7 @@ module.exports = {
   },
   updateDayData: function(req, res) {
     console.log("MongoUpdate", req.body);
-    db.Restaurant.findOneAndUpdate({ _id: req.params.id }, req.body, {
-      new: true
-    })
+    db.Restaurant.findOneAndUpdate({ _id: req.params.id }, req.body)
       .then(dbModel => res.json(dbModel))
       .catch(err => res.status(422).json(err));
   },

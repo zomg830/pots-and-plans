@@ -17,7 +17,8 @@ class RunGame extends React.Component {
     await this.props.fetchRestaurant(this.props.id);
     this.setState({
       event: "Welcome back!",
-      userId: this.props.restaurant.userId
+      userId: this.props.restaurant.userId,
+      endingBalance: this.props.restaurant.balance
     });
   }
   randomGenerator() {
@@ -37,10 +38,11 @@ class RunGame extends React.Component {
     return array;
   };
 
-  dayGoesBy(r, id) {
+  dayGoesBy(r, id, startBalance) {
     console.log("onClick state", this.state);
     let orders = this.randomArray();
     let randomObj = r();
+    console.log("restaurant balance", startBalance);
     this.setState({
       // getting the current balance listed on the DB
       event: randomObj.message
@@ -51,8 +53,8 @@ class RunGame extends React.Component {
         burger: 5 + randomObj.skill,
         hotdog: 2 + randomObj.skill
       },
-      newBalance: this.props.restaurant.balance + randomObj.balance,
-      previousBalance: this.props.restaurant.balance
+      newBalance: startBalance + randomObj.balance,
+      previousBalance: startBalance
     };
     // console.log(randomOrder);
     let burgersSold = 0;
@@ -76,19 +78,17 @@ class RunGame extends React.Component {
     this.dayOver(burgersSold, hotDogsSold, dayData);
   }
 
-  dayOver = async (burgers, hotdogs, dayData) => {
+  dayOver = (burgers, hotdogs, dayData) => {
     console.log("dayOver starting state", this.state);
     let burgerSales = burgers * 7;
     let hotdogSales = hotdogs * 2;
     let totalSales = burgerSales + hotdogSales;
-    dayData.newBalance += totalSales;
-    await this.props.saveRestaurantDay(this.props.id, {
-      balance: dayData.newBalance,
-      dayData: dayData
+    this.props.saveRestaurantDay(this.props.id, {
+      balance: dayData.newBalance + totalSales
     });
     this.setState({
-      endingBalance: dayData.newBalance,
-      netSales: dayData.newBalance - dayData.previousBalance,
+      endingBalance: dayData.newBalance + totalSales,
+      netSales: dayData.newBalance + totalSales - dayData.previousBalance,
       loadingDay: false
     });
   };
@@ -174,11 +174,7 @@ class RunGame extends React.Component {
           <div className="col-4">
             <div className="endingBalance">
               <p className="endBalance">Ending Balance: </p>
-              <p className="endingAmnt">
-                $
-                {this.props.restaurant.balance +
-                  (this.state.netSales ? this.state.netSales : 0)}
-              </p>
+              <p className="endingAmnt">${this.state.endingBalance}</p>
             </div>
           </div>
         </div>
@@ -188,7 +184,7 @@ class RunGame extends React.Component {
             this.setState({
               loadingDay: true
             });
-            this.dayGoesBy(r, this.props.id);
+            this.dayGoesBy(r, this.props.id, this.state.endingBalance);
           }}
         >
           {this.state.loadingDay ? (
