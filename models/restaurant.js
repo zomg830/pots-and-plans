@@ -1,11 +1,14 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
+mongoose.set("useFindAndModify", false);
+
 const restaurantSchema = new Schema({
   restaurant_name: { type: String, required: true },
   owner_name: { type: String, required: true },
   balance: { type: Number, required: true, default: 10000 },
   userId: String,
+  location: { type: String, default: null },
   date: { type: Date, default: Date.now },
   dayData: {
     time: { type: Number },

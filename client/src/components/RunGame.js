@@ -1,32 +1,29 @@
 import React from "react";
 import { connect } from "react-redux";
+
+import Modal from "../components/Modal";
 import r from "../utils/randomEvent";
 import { saveRestaurantDay, fetchRestaurant } from "../actions";
-
 import dollarSign from "../images/dollarSign.gif";
 
 class RunGame extends React.Component {
   state = {
-    previousBalance: null,
     event: null,
     endingBalance: null,
-    netSales: null,
     userId: null
   };
   //get starting balance from db
   async componentDidMount() {
     await this.props.fetchRestaurant(this.props.id);
-
     this.setState({
-      previousBalance: this.props.restaurant.balance,
       event: "Welcome back!",
       userId: this.props.restaurant.userId
     });
   }
-   randomGenerator() {
-    return Math.floor(Math.random() * (100-50) + 50);
+  randomGenerator() {
+    return Math.floor(Math.random() * (100 - 50) + 50);
   }
-  
+
   randomArray = () => {
     let array = [];
     let randomOne = this.randomGenerator();
@@ -38,16 +35,14 @@ class RunGame extends React.Component {
       array.push("hotdog");
     }
     return array;
-  }
-  
+  };
 
-  dayGoesBy(r,id) {
-    
+  dayGoesBy(r, id) {
+    console.log("onClick state", this.state);
     let orders = this.randomArray();
     let randomObj = r();
     this.setState({
       // getting the current balance listed on the DB
-      previousBalance: this.props.restaurant.balance,
       event: randomObj.message
     });
     let dayData = {
@@ -65,18 +60,12 @@ class RunGame extends React.Component {
     for (let i = 0; i < orders.length; i++) {
       // the loop is not ending whenever it gets over the length of the array.
       // console.log(randomOrder[i]);
-      
-      if (
-        orders[i] === "burger" &&
-        dayData.time > dayData.chefSkill.burger
-      ) {
+
+      if (orders[i] === "burger" && dayData.time > dayData.chefSkill.burger) {
         dayData.time -= dayData.chefSkill.burger;
-        burgersSold++; 
+        burgersSold++;
       }
-      if (
-        orders[i] === "hotdog" &&
-        dayData.time > dayData.chefSkill.hotdog  
-      ) {
+      if (orders[i] === "hotdog" && dayData.time > dayData.chefSkill.hotdog) {
         dayData.time -= dayData.chefSkill.hotdog;
         hotDogsSold++;
       }
@@ -85,26 +74,56 @@ class RunGame extends React.Component {
       }
     }
     this.dayOver(burgersSold, hotDogsSold, dayData);
-  //   else {
-  //     console.log(dayData.time);
-  //     this.dayOver(burgersSold, hotDogsSold);
-      
-  // }
-
-    //update db with newBalance
-    //pass in id, restaurant data
   }
 
-  dayOver = (burgers, hotdogs, dayData) => {
+  dayOver = async (burgers, hotdogs, dayData) => {
+    console.log("dayOver starting state", this.state);
     let burgerSales = burgers * 7;
     let hotdogSales = hotdogs * 2;
     let totalSales = burgerSales + hotdogSales;
     dayData.newBalance += totalSales;
-    this.props.saveRestaurantDay(this.props.id, dayData);
+    await this.props.saveRestaurantDay(this.props.id, {
+      balance: dayData.newBalance,
+      dayData: dayData
+    });
     this.setState({
       endingBalance: dayData.newBalance,
-      netSales: dayData.newBalance - dayData.previousBalance
+      netSales: dayData.newBalance - dayData.previousBalance,
+      loadingDay: false
     });
+  };
+
+  renderModalContent = () => {
+    return "Select a starting location";
+  };
+
+  renderModalActions = () => {
+    return (
+      <React.Fragment>
+        <button
+          onClick={() =>
+            this.props.saveRestaurantDay(this.props.id, {
+              location: "Food Truck",
+              balance: this.props.restaurant.balance - 2500
+            })
+          }
+          className="ui button negative"
+        >
+          Food Truck
+        </button>
+        <button
+          className="ui button"
+          onClick={() =>
+            this.props.saveRestaurantDay(this.props.id, {
+              location: "Restaurant",
+              balance: this.props.restaurant.balance - 5000
+            })
+          }
+        >
+          Restaurant
+        </button>
+      </React.Fragment>
+    );
   };
 
   render() {
@@ -116,66 +135,71 @@ class RunGame extends React.Component {
       return <div>You do not have permission to play as this restaurant</div>;
     }
 
+    if (!this.props.restaurant.location) {
+      return (
+        <Modal
+          title="Select a Location"
+          content={this.renderModalContent()}
+          actions={this.renderModalActions()}
+        />
+      );
+    }
+
     return (
-      <div className="ui container" >
-      {/* test code: create sales report */}
+      <div className="ui container">
+        {/* test code: create sales report */}
         <div id="container" className="row justify-content-md-center">
           <div className="col col-md-2">
-            <img src={ dollarSign } alt="burger" id="dollarSign-img"/>   
+            <img src={dollarSign} alt="burger" id="dollarSign-img" />
           </div>
           <div className="col-md-auto">
-            <p id="balance">Opening Balance:</p> 
-            <p id="prevBalance">${this.state.previousBalance}</p>
+            <p id="balance">Opening Balance:</p>
+            <p id="prevBalance">${this.props.restaurant.balance}</p>
           </div>
           <div className="col col-md-2">
-            <img src={ dollarSign } alt="dollar sign" id="dollarSign-img"/>  
+            <img src={dollarSign} alt="dollar sign" id="dollarSign-img" />
           </div>
         </div>
         {/* second row */}
         <div id="wrapper" className="row justify-content-md-center">
           <div id="dailyMssg" className="col-5">
-            <p className="dailyMssg">Daily Message:{" "}</p>
-            <br/>
+            <p className="dailyMssg">Daily Message: </p>
+            <br />
             <p>{!this.state.event ? "Nothing today!" : this.state.event}</p>
           </div>
           <div className="col-3">
-              <p className="totalProfit">Total Profit: </p>
-              <p className="profitAmnt">${this.state.netSales}</p>
+            <p className="totalProfit">Total Profit: </p>
+            <p className="profitAmnt">${this.state.netSales}</p>
           </div>
           <div className="col-4">
             <div className="endingBalance">
               <p className="endBalance">Ending Balance: </p>
-              <p className="endingAmnt">${this.state.endingBalance}</p>
+              <p className="endingAmnt">
+                $
+                {this.props.restaurant.dayData.newBalance + this.state.netSales}
+              </p>
             </div>
           </div>
         </div>
-        <button className="runGame" onClick={() => this.dayGoesBy(r, this.props.id)}>
-          Run Game
-        </button>         
+        <button
+          className="runGame"
+          onClick={() => {
+            this.setState({
+              loadingDay: true
+            });
+            this.dayGoesBy(r, this.props.id);
+          }}
+        >
+          {this.state.loadingDay ? (
+            <i className="ui active centered inline loader" />
+          ) : (
+            "Run Game"
+          )}
+        </button>{" "}
       </div>
     );
   }
-}   
-
-        {/* ============= PREVIOUS CODE TO BE DELETED ============ */}
-        {/* <div className="ui horizontal segments">
-          <div className="ui segment">
-            <p>Previous Balance: ${this.state.previousBalance}</p>
-          </div>
-          <div className="ui segment">
-            <p>
-              Daily Message:{" "}
-              {!this.state.event ? "Nothing today!" : this.state.event}
-            </p>
-          </div>
-          <div className="ui segment">
-            <p>Ending Balance: ${this.state.endingBalance}</p>
-          </div>
-          <div className="ui segment">
-            <p>Total Profit: ${this.state.netSales}</p>
-          </div>
-        </div> */}
-   
+}
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -188,4 +212,3 @@ export default connect(
   mapStateToProps,
   { saveRestaurantDay, fetchRestaurant }
 )(RunGame);
-

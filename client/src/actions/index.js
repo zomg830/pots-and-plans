@@ -75,9 +75,8 @@ export const editRestaurant = (id, formValues) => async dispatch => {
   history.push("/");
 };
 
-export const saveRestaurantDay = (id, dayData) => async dispatch => {
-  console.log(dayData);
-  const response = await API.saveRestaurantData(id, { ...dayData });
+export const saveRestaurantDay = (id, data) => async dispatch => {
+  const response = await API.saveRestaurantData(id, { ...data });
 
   dispatch({ type: SAVE_RESTAURANT_DAY, payload: response.data });
 };
