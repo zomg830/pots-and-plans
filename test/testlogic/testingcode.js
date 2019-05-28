@@ -48,6 +48,7 @@ function DayGoesBy(chefSkill, time, orders, balance, r) {
         //update db with newBalance
 
 }
+// need to add how to manage orders
 function DayOver(A, B) {
     let burgerSales = A * 3;
     let hotdogSales = B * 2;
@@ -59,3 +60,5 @@ function DayOver(A, B) {
 DayGoesBy(chefSkill, time, orders, randomEvent());
 DayGoesBy(chefSkill, time, orderEasy);
 DayGoesBy(chefSkill, time, orderTest);
+
+

@@ -1,9 +1,9 @@
 import React from "react";
 import { connect } from "react-redux";
-
-import orders from "../utils/orders";
 import r from "../utils/randomEvent";
 import { saveRestaurantDay, fetchRestaurant } from "../actions";
+
+import dollarSign from "../images/dollarSign.gif";
 
 class RunGame extends React.Component {
   state = {
@@ -23,58 +23,80 @@ class RunGame extends React.Component {
       userId: this.props.restaurant.userId
     });
   }
+   randomGenerator() {
+    return Math.floor(Math.random() * (100-50) + 50);
+  }
+  
+  randomArray = () => {
+    let array = [];
+    let randomOne = this.randomGenerator();
+    let randomTwo = this.randomGenerator();
+    for (let i = 0; i < randomOne; i++) {
+      array.push("burger");
+    }
+    for (let i = 0; i < randomTwo; i++) {
+      array.push("hotdog");
+    }
+    return array;
+  }
+  
 
-  dayGoesBy(orders, r) {
+  dayGoesBy(r,id) {
+    
+    let orders = this.randomArray();
     let randomObj = r();
     this.setState({
+      // getting the current balance listed on the DB
       previousBalance: this.props.restaurant.balance,
       event: randomObj.message
     });
     let dayData = {
       time: 720 + randomObj.time,
       chefSkill: {
-        burger: 4.5 + randomObj.skill,
+        burger: 5 + randomObj.skill,
         hotdog: 2 + randomObj.skill
       },
       newBalance: this.props.restaurant.balance + randomObj.balance,
       previousBalance: this.props.restaurant.balance
     };
-    let randomOrder = orders
-      // sorts the array randomly
-      .sort(function() {
-        return 0.5 - Math.random();
-      });
     // console.log(randomOrder);
     let burgersSold = 0;
     let hotDogsSold = 0;
-    for (let i = 0; i < randomOrder.length; i++) {
+    for (let i = 0; i < orders.length; i++) {
       // the loop is not ending whenever it gets over the length of the array.
       // console.log(randomOrder[i]);
+      
       if (
-        randomOrder[i] === "burger" &&
+        orders[i] === "burger" &&
         dayData.time > dayData.chefSkill.burger
       ) {
-        dayData.time -= dayData.chefSkill.burger * 3;
-        burgersSold++;
+        dayData.time -= dayData.chefSkill.burger;
+        burgersSold++; 
       }
       if (
-        randomOrder[i] === "hotdog" &&
-        dayData.time > dayData.chefSkill.hotdog
+        orders[i] === "hotdog" &&
+        dayData.time > dayData.chefSkill.hotdog  
       ) {
-        dayData.time -= dayData.chefSkill.hotdog * 3;
+        dayData.time -= dayData.chefSkill.hotdog;
         hotDogsSold++;
       }
+      if (dayData.time <= 0) {
+        return this.dayOver(burgersSold, hotDogsSold, dayData);
+      }
     }
-    if (dayData.time <= 0) {
-      this.dayOver(burgersSold, hotDogsSold, dayData);
-    }
+    this.dayOver(burgersSold, hotDogsSold, dayData);
+  //   else {
+  //     console.log(dayData.time);
+  //     this.dayOver(burgersSold, hotDogsSold);
+      
+  // }
 
     //update db with newBalance
     //pass in id, restaurant data
   }
 
   dayOver = (burgers, hotdogs, dayData) => {
-    let burgerSales = burgers * 3;
+    let burgerSales = burgers * 7;
     let hotdogSales = hotdogs * 2;
     let totalSales = burgerSales + hotdogSales;
     dayData.newBalance += totalSales;
@@ -95,8 +117,48 @@ class RunGame extends React.Component {
     }
 
     return (
-      <div className="ui container">
-        <div className="ui horizontal segments">
+      <div className="ui container" >
+      {/* test code: create sales report */}
+        <div id="container" className="row justify-content-md-center">
+          <div className="col col-md-2">
+            <img src={ dollarSign } alt="burger" id="dollarSign-img"/>   
+          </div>
+          <div className="col-md-auto">
+            <p id="balance">Opening Balance:</p> 
+            <p id="prevBalance">${this.state.previousBalance}</p>
+          </div>
+          <div className="col col-md-2">
+            <img src={ dollarSign } alt="dollar sign" id="dollarSign-img"/>  
+          </div>
+        </div>
+        {/* second row */}
+        <div id="wrapper" className="row justify-content-md-center">
+          <div id="dailyMssg" className="col-5">
+            <p className="dailyMssg">Daily Message:{" "}</p>
+            <br/>
+            <p>{!this.state.event ? "Nothing today!" : this.state.event}</p>
+          </div>
+          <div className="col-3">
+              <p className="totalProfit">Total Profit: </p>
+              <p className="profitAmnt">${this.state.netSales}</p>
+          </div>
+          <div className="col-4">
+            <div className="endingBalance">
+              <p className="endBalance">Ending Balance: </p>
+              <p className="endingAmnt">${this.state.endingBalance}</p>
+            </div>
+          </div>
+        </div>
+        <button className="runGame" onClick={() => this.dayGoesBy(r, this.props.id)}>
+          Run Game
+        </button>         
+      </div>
+    );
+  }
+}   
+
+        {/* ============= PREVIOUS CODE TO BE DELETED ============ */}
+        {/* <div className="ui horizontal segments">
           <div className="ui segment">
             <p>Previous Balance: ${this.state.previousBalance}</p>
           </div>
@@ -110,16 +172,10 @@ class RunGame extends React.Component {
             <p>Ending Balance: ${this.state.endingBalance}</p>
           </div>
           <div className="ui segment">
-            <p>Net Sales: ${this.state.netSales}</p>
+            <p>Total Profit: ${this.state.netSales}</p>
           </div>
-        </div>
-        <button onClick={() => this.dayGoesBy(orders, r, this.props.id)}>
-          Run Game
-        </button>
-      </div>
-    );
-  }
-}
+        </div> */}
+   
 
 const mapStateToProps = (state, ownProps) => {
   return {
