@@ -176,7 +176,8 @@ class RunGame extends React.Component {
               <p className="endBalance">Ending Balance: </p>
               <p className="endingAmnt">
                 $
-                {this.props.restaurant.dayData.newBalance + this.state.netSales}
+                {this.props.restaurant.balance +
+                  (this.state.netSales ? this.state.netSales : 0)}
               </p>
             </div>
           </div>

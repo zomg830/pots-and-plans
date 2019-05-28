@@ -16,8 +16,8 @@ const restaurantSchema = new Schema({
       burger: { type: Number },
       hotdog: { type: Number }
     },
-    newBalance: { type: Number },
-    previousBalance: { type: Number }
+    newBalance: { type: Number, default: null },
+    previousBalance: { type: Number, default: null }
   }
 });
 
