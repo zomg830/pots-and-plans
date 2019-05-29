@@ -63,7 +63,7 @@ export default function randomEvent() {
       result.time = 0;
       result.message =
         "Your cook didn't sleep a wink last night.  Cooking Skill decreases.";
-      result.imageURL = "../imageURLs/sleepy.gif";
+      result.imageURL = "./images/sleepy.gif";
       break;
     case "plumbing":
       result.balance -= 1050;
@@ -71,7 +71,7 @@ export default function randomEvent() {
       result.time = 0;
       result.message =
         "Oh no, the water main burst!!  Pay the plumber $1050.00.";
-      result.imageURL = "../imageURLs/plumber.png";
+      result.imageURL = "./images/plumber.png";
       break;
     case "convention":
       result.time += 150;
@@ -102,7 +102,7 @@ export default function randomEvent() {
       result.skill = 0;
       result.time = 0;
       result.message = "Bad health inspection.  Give inspector $1000.00 bribe.";
-      result.imageURL = "./imageURLs/inspection.png";
+      result.imageURL = "./images/inspection.png";
       break;
     case "competition":
       result.time += 150;
