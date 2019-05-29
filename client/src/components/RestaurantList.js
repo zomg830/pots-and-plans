@@ -11,9 +11,6 @@ class RestaurantList extends Component {
 
   async componentDidMount() {
     await this.props.fetchRestaurants();
-    API.getUserRestaurants("103199728256134373496").then(response => {
-      console.log(response);
-    });
   }
 
   renderAdmin(restaurant) {
