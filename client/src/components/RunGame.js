@@ -138,7 +138,7 @@ class RunGame extends React.Component {
             <p className="dailyMssg">Daily Message:{" "}</p>
             <br/>
             <p>{!this.state.event ? "Nothing today!" : this.state.event}</p>
-            <div>{!this.state.image ? <img src={this.state.image} height= "200px" width= "200p"></img>: <img src={this.state.image} height= "200px" width= "200p"></img>}</div>
+            <div>{!this.state.image ? <img src="https://github.com/zomg830/pots-and-plans/blob/aadvbranch/test/testlogic/defaultrestaurant.gif?raw=true" height= "200px" width= "200p"></img>: <img src={this.state.image} height= "200px" width= "200p"></img>}</div>
           </div>
           <div className="col-3">
               <p className="totalProfit">Total Profit: </p>

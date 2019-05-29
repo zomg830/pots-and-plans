@@ -208,3 +208,52 @@ h2 {
   font-family: "Press Start 2P", cursive;
   background-image: url("./images/greenPixels.jpg");
 }
+
+/* Cool infinite background scrolling animation.
+ * Twitter: @kootoopas
+ */
+
+/* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+@-moz-keyframes    bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+@-o-keyframes      bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+@keyframes         bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% { background-position: 50px 50px;}
+}
+@-moz-keyframes    bg-scrolling {
+  0% { background-position: 50px 50px; }
+}
+@-o-keyframes      bg-scrolling {
+  0% { background-position: 50px 50px;}
+}
+@keyframes         bg-scrolling {
+  0% { background-position: 50px 50px; }
+}
+
+/* Main styles */
+body {
+  /* img size is 50x50 */
+  background: url("https://wallpapertag.com/wallpaper/full/9/c/c/143014-download-free-black-pattern-background-1920x1440-notebook.jpg") repeat 0 0 ;
+  
+  -webkit-animation: bg-scrolling-reverse .92s infinite; /* Safari 4+ */
+  -moz-animation:    bg-scrolling-reverse .92s infinite; /* Fx 5+ */
+  -o-animation:      bg-scrolling-reverse .92s infinite; /* Opera 12+ */
+  animation:         bg-scrolling-reverse .92s infinite; /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function:    linear;
+  -o-animation-timing-function:      linear;
+  animation-timing-function:         linear;
+  
+  
+}
+
