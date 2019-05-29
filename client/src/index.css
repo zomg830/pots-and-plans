@@ -67,7 +67,8 @@ h2 {
 .modal-title {
   color: rgb(238, 44, 44);
   font-size: 26px !important;
-  text-shadow: -1.5px -1.5px 0 blue, 1.5px -1.5px 0 blue, -1.5px 1.5px 0 blue, 1.5px 1.5px 0 blue;
+  text-shadow: -1.5px -1.5px 0 blue, 1.5px -1.5px 0 blue, -1.5px 1.5px 0 blue,
+    1.5px 1.5px 0 blue;
 }
 
 .modal-body {
@@ -78,7 +79,8 @@ h2 {
   background-repeat: no-repeat;
   color: rgb(238, 44, 44);
   font-size: 23px;
-  text-shadow: -1.5px -1.5px 0 darkblue, 1.5px -1.5px 0 darkblue, -1.5px 1.5px 0 darkblue, 1.5px 1.5px 0 darkblue;
+  text-shadow: -1.5px -1.5px 0 darkblue, 1.5px -1.5px 0 darkblue,
+    -1.5px 1.5px 0 darkblue, 1.5px 1.5px 0 darkblue;
 }
 
 .modal-footer {
@@ -100,7 +102,7 @@ h2 {
 
 #deleteRestaurantList {
   background-image: url("./images/redBlack.jpg");
-  font-family: "Press Start 2P", cursive; 
+  font-family: "Press Start 2P", cursive;
 }
 
 .ui.segment {
@@ -113,7 +115,6 @@ h2 {
 }
 
 .header {
-  color: white !important;
   font-size: 25px;
   margin-bottom: 18px !important;
   font-family: "Press Start 2P", cursive !important;
@@ -130,7 +131,8 @@ h2 {
   color: rgb(6, 190, 190);
   color: yellow;
   font-size: 2.5vw;
-  text-shadow: -1.5px -1.5px 0 rgb(6, 190, 190), 1.5px -1.5px 0 rgb(6, 190, 190), -1.5px 1.5px 0 rgb(6, 190, 190), 1.5px 1.5px 0 rgb(6, 190, 190);
+  text-shadow: -1.5px -1.5px 0 rgb(6, 190, 190), 1.5px -1.5px 0 rgb(6, 190, 190),
+    -1.5px 1.5px 0 rgb(6, 190, 190), 1.5px 1.5px 0 rgb(6, 190, 190);
 }
 
 #prevBalance {
@@ -138,7 +140,8 @@ h2 {
   font-family: "Press Start 2P", cursive;
   color: red;
   font-size: 2vw;
-  text-shadow: -1.5px -1.5px 0 yellow, 1.5px -1.5px 0 yellow, -1.5px 1.5px 0 yellow, 1.5px 1.5px 0 yellow;
+  text-shadow: -1.5px -1.5px 0 yellow, 1.5px -1.5px 0 yellow,
+    -1.5px 1.5px 0 yellow, 1.5px 1.5px 0 yellow;
 }
 
 #dollarSign-img {
@@ -153,7 +156,6 @@ h2 {
 #wrapper {
   margin-top: 40px;
 }
-
 
 #dailyMssg {
   /* height: 100px; */
@@ -178,10 +180,11 @@ h2 {
   font-family: "Press Start 2P", cursive;
 }
 
-.profitAmnt{
+.profitAmnt {
   font-size: 2vw;
   font-family: "Press Start 2P", cursive;
-  text-shadow: -1.5px -1.5px 0 yellow, 1.5px -1.5px 0 yellow, -1.5px 1.5px 0 yellow, 1.5px 1.5px 0 yellow;
+  text-shadow: -1.5px -1.5px 0 yellow, 1.5px -1.5px 0 yellow,
+    -1.5px 1.5px 0 yellow, 1.5px 1.5px 0 yellow;
 }
 
 .endBalance {
@@ -192,9 +195,10 @@ h2 {
 }
 
 .endingAmnt {
-  font-size: 2vw; 
+  font-size: 2vw;
   font-family: "Press Start 2P", cursive;
-  text-shadow: -1.5px -1.5px 0 yellow, 1.5px -1.5px 0 yellow, -1.5px 1.5px 0 yellow, 1.5px 1.5px 0 yellow;
+  text-shadow: -1.5px -1.5px 0 yellow, 1.5px -1.5px 0 yellow,
+    -1.5px 1.5px 0 yellow, 1.5px 1.5px 0 yellow;
 }
 
 .runGame {
@@ -207,4 +211,16 @@ h2 {
   padding: 10px;
   font-family: "Press Start 2P", cursive;
   background-image: url("./images/greenPixels.jpg");
+}
+
+.nextDay {
+  color: black;
+  width: auto;
+  font-size: 2vw;
+  display: block;
+  margin: 40px auto;
+  border: none;
+  padding: 10px;
+  font-family: "Press Start 2P", cursive;
+  background-image: url("./images/redBlack.jpg");
 }

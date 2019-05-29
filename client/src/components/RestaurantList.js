@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import API from "../utils/API";
 import { fetchRestaurants } from "../actions";
 import "../index.css";
 
@@ -41,7 +42,12 @@ class RestaurantList extends Component {
         <div className="item" key={restaurant._id}>
           {this.renderAdmin(restaurant)}
           <div className="content">
-            <Link to={`/restaurants/play/${restaurant._id}/${restaurant.restaurant_name}`} className="header">
+            <Link
+              to={`/restaurants/play/${restaurant._id}/${
+                restaurant.restaurant_name
+              }`}
+              className="header"
+            >
               {restaurant.restaurant_name}
             </Link>
             <div className="description">Owner: {restaurant.owner_name}</div>
