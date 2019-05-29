@@ -48,7 +48,8 @@ class RunGame extends React.Component {
     this.setState({
       // getting the current balance listed on the DB
       previousBalance: this.props.restaurant.balance,
-      event: randomObj.message
+      event: randomObj.message,
+      image: randomObj.imageURL
     });
     let dayData = {
       time: 720 + randomObj.time,
@@ -137,6 +138,7 @@ class RunGame extends React.Component {
             <p className="dailyMssg">Daily Message:{" "}</p>
             <br/>
             <p>{!this.state.event ? "Nothing today!" : this.state.event}</p>
+            <div>{!this.state.image ? <img src={this.state.image} height= "200px" width= "200p"></img>: <img src={this.state.image} height= "200px" width= "200p"></img>}</div>
           </div>
           <div className="col-3">
               <p className="totalProfit">Total Profit: </p>

@@ -7,7 +7,7 @@ export default function randomEvent() {
     skill: 0,
     balance: 0,
     message: "",
-    imageURL: ""
+    imageURL: null
   };
 
   const events = [
@@ -111,7 +111,7 @@ export default function randomEvent() {
       result.message =
         "Your competition had to close due to poor health inspection.  Walk-in traffic increases.";
       result.imageURL = "https://media.giphy.com/media/FM0DQEF2JNja0/giphy.gif";
-      break;
+      break;    
   }
   return result;
 }
