@@ -212,3 +212,15 @@ h2 {
   font-family: "Press Start 2P", cursive;
   background-image: url("./images/greenPixels.jpg");
 }
+
+.nextDay {
+  color: black;
+  width: auto;
+  font-size: 2vw;
+  display: block;
+  margin: 40px auto;
+  border: none;
+  padding: 10px;
+  font-family: "Press Start 2P", cursive;
+  background-image: url("./images/redBlack.jpg");
+}

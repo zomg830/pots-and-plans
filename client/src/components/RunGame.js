@@ -39,12 +39,12 @@ class RunGame extends React.Component {
   };
 
   dayGoesBy(r, id, startBalance) {
-    console.log("onClick state", this.state);
     let orders = this.randomArray();
     let randomObj = r();
     console.log("restaurant balance", startBalance);
     this.setState({
       // getting the current balance listed on the DB
+      loadingDay: true,
       event: randomObj.message
     });
     let dayData = {
@@ -89,7 +89,7 @@ class RunGame extends React.Component {
     this.setState({
       endingBalance: dayData.newBalance + totalSales,
       netSales: dayData.newBalance + totalSales - dayData.previousBalance,
-      loadingDay: false
+      loadingDay: true
     });
   };
 
@@ -180,21 +180,25 @@ class RunGame extends React.Component {
             </div>
           </div>
         </div>
-        <button
-          className="runGame"
-          onClick={() => {
-            this.setState({
-              loadingDay: true
-            });
-            this.dayGoesBy(r, this.props.id, this.state.endingBalance);
-          }}
-        >
-          {this.state.loadingDay ? (
-            <i className="ui active centered inline loader" />
-          ) : (
-            "Run Game"
-          )}
-        </button>{" "}
+        {this.state.loadingDay ? (
+          <button
+            className="nextDay"
+            onClick={() => {
+              this.setState({ loadingDay: false });
+            }}
+          >
+            Next Day
+          </button>
+        ) : (
+          <button
+            className="runGame"
+            onClick={() => {
+              this.dayGoesBy(r, this.props.id, this.state.endingBalance);
+            }}
+          >
+            Run Game
+          </button>
+        )}
       </div>
     );
   }
