@@ -6,7 +6,6 @@ import Title from "../components/Title";
 import RunGame from "../components/RunGame";
 
 const BeginDayView = props => {
-  console.log(props.restaurant);
   const id = props.match.params.id;
   return (
     <div>
@@ -25,4 +24,3 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 export default connect(mapStateToProps)(BeginDayView);
-
