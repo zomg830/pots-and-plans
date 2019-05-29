@@ -120,7 +120,7 @@ h2 {
 }
 
 .ui.horizontal.segments {
-  background-color: aquamarine;
+  background-color: rgb(128, 255, 213);
   font-family: "Press Start 2P", cursive;
 }
 
@@ -159,7 +159,7 @@ h2 {
   /* height: 100px; */
   font-family: "Press Start 2P", cursive;
   font-size: 1.5vw;
-  color: rgb(0, 140, 255);
+  color: rgb(220, 211, 240);
   text-align: center;
   /* padding: 30px; */
 }
@@ -168,7 +168,7 @@ h2 {
   /* height: 100px; */
   font-family: "Press Start 2P", cursive;
   font-size: 1.5vw;
-  color: rgb(40, 22, 201);
+  color: rgb(226, 237, 28);
   text-align: center;
 }
 
@@ -243,7 +243,7 @@ h2 {
 /* Main styles */
 body {
   /* img size is 50x50 */
-  background: url("https://raw.githubusercontent.com/zomg830/pots-and-plans/aadvbranch/test/testlogic/Background%20Layer%20Copy.png") repeat 0 0 ;
+  background: url("https://github.com/zomg830/pots-and-plans/blob/aadvbranch/test/testlogic/B.png?raw=true") repeat 0 0 ;
   
   -webkit-animation: bg-scrolling-reverse .92s infinite; /* Safari 4+ */
   -moz-animation:    bg-scrolling-reverse .92s infinite; /* Fx 5+ */
