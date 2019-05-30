@@ -41,7 +41,24 @@ body {
 
 .google.button {
   width: 200px;
+  font-family: "Press Start 2P", cursive;
+  color: rgb(58, 143, 182) !important;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+  box-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
+  background-image: url("./images/redBlack.jpg") !important;
+  height: 60px;
 }
+
+.ui.secondary.pointing.menu {
+  font-family: "Press Start 2P", cursive;
+  text-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
+  font-size: 3vmin;
+}
+
+.google.icon {
+  color: rgb(19, 185, 19);
+}
+
 #burger-img {
   width: 20vw;
   display: block;
@@ -58,6 +75,11 @@ h2 {
 #instructions {
   background-color: transparent;
   border: none;
+  font-size: 3vmin;
+  text-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
+  color: rgb(58, 143, 182);
+  margin: auto;
+  vertical-align: bottom;
 }
 
 .modal-header {
@@ -65,10 +87,12 @@ h2 {
 }
 
 .modal-title {
+  font-family: "Press Start 2P", cursive;
   color: rgb(238, 44, 44);
-  font-size: 26px !important;
-  text-shadow: -1.5px -1.5px 0 blue, 1.5px -1.5px 0 blue, -1.5px 1.5px 0 blue,
-    1.5px 1.5px 0 blue;
+
+  font-size: 3vmin !important;
+  text-shadow: -1.5px -1.5px 0 blue, 1.5px -1.5px 0 blue, -1.5px 1.5px 0 blue, 1.5px 1.5px 0 blue;
+
 }
 
 .modal-body {
@@ -78,9 +102,10 @@ h2 {
   background-size: 100%;
   background-repeat: no-repeat;
   color: rgb(238, 44, 44);
-  font-size: 23px;
-  text-shadow: -1.5px -1.5px 0 darkblue, 1.5px -1.5px 0 darkblue,
-    -1.5px 1.5px 0 darkblue, 1.5px 1.5px 0 darkblue;
+
+  /* font-size: 23px; */
+  font-size: 3vmin;
+  text-shadow: -1.5px -1.5px 0 darkblue, 1.5px -1.5px 0 darkblue, -1.5px 1.5px 0 darkblue, 1.5px 1.5px 0 darkblue;
 }
 
 .modal-footer {
@@ -98,11 +123,15 @@ h2 {
 #editRestaurantList {
   background-image: url("./images/greenPixels.jpg");
   font-family: "Press Start 2P", cursive;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+  font-size: 2vmin;
 }
 
 #deleteRestaurantList {
   background-image: url("./images/redBlack.jpg");
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", cursive; 
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+  font-size: 2vmin;
 }
 
 .ui.segment {
@@ -124,6 +153,7 @@ h2 {
   font-size: 25px;
   margin-bottom: 18px !important;
   font-family: "Press Start 2P", cursive !important;
+  font-size: 3vmin;
 }
 
 .ui.horizontal.segments {
