@@ -2,6 +2,7 @@ import React from "react";
 import { Router, Route, Switch } from "react-router-dom";
 
 import Header from "./Header";
+import '../index.css'
 import LandingView from "../pages/LandingView";
 import BeginDayView from "../pages/BeginDayView";
 import CreateRestaurantView from "../pages/CreateRestaurantView";

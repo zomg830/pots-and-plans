@@ -21,6 +21,7 @@ class RestaurantList extends Component {
             to={`/restaurants/edit/${restaurant._id}`}
             className="ui button primary"
             id="editRestaurantList"
+
           >
             Edit
           </Link>
@@ -38,6 +39,7 @@ class RestaurantList extends Component {
 
   renderList() {
     return this.props.restaurants.map(restaurant => {
+      if(restaurant.is_active === true){
       return (
         <div className="item" key={restaurant._id}>
           {this.renderAdmin(restaurant)}
@@ -46,7 +48,7 @@ class RestaurantList extends Component {
               to={`/restaurants/play/${restaurant._id}/${
                 restaurant.restaurant_name
               }`}
-              className="header"
+              className="test"
             >
               {restaurant.restaurant_name}
             </Link>
@@ -54,6 +56,7 @@ class RestaurantList extends Component {
           </div>
         </div>
       );
+    }
     });
   }
 

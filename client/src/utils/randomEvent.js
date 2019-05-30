@@ -7,7 +7,7 @@ export default function randomEvent() {
     skill: 0,
     balance: 0,
     message: "",
-    imageURL: ""
+    imageURL: null
   };
 
   const events = [
@@ -63,7 +63,7 @@ export default function randomEvent() {
       result.time = 0;
       result.message =
         "Your cook didn't sleep a wink last night.  Cooking Skill decreases.";
-      result.imageURL = "../imageURLs/sleepy.gif";
+      result.imageURL = "https://github.com/zomg830/pots-and-plans/blob/aadvbranch/client/src/images/sleepy.gif?raw=true";
       break;
     case "plumbing":
       result.balance -= 1050;
@@ -71,7 +71,7 @@ export default function randomEvent() {
       result.time = 0;
       result.message =
         "Oh no, the water main burst!!  Pay the plumber $1050.00.";
-      result.imageURL = "../imageURLs/plumber.png";
+      result.imageURL = "https://github.com/zomg830/pots-and-plans/blob/aadvbranch/client/src/images/plumber.png?raw=true";
       break;
     case "convention":
       result.time += 150;
@@ -102,7 +102,7 @@ export default function randomEvent() {
       result.skill = 0;
       result.time = 0;
       result.message = "Bad health inspection.  Give inspector $1000.00 bribe.";
-      result.imageURL = "./imageURLs/inspection.png";
+      result.imageURL = "https://github.com/zomg830/pots-and-plans/blob/aadvbranch/client/src/images/inspection.png?raw=true";
       break;
     case "competition":
       result.time += 150;
@@ -111,7 +111,7 @@ export default function randomEvent() {
       result.message =
         "Your competition had to close due to poor health inspection.  Walk-in traffic increases.";
       result.imageURL = "https://media.giphy.com/media/FM0DQEF2JNja0/giphy.gif";
-      break;
+      break;    
   }
   return result;
 }

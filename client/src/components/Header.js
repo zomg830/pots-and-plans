@@ -7,13 +7,16 @@ import InstructionsModal from "./InstructionsModal";
 const Header = () => {
   return (
     <div className="ui secondary pointing menu">
-      <Link to="/" style={{ color: "white" }} className="item">
+      <Link to="/" style={{ color: "rgb(19, 185, 19)", alignSelf: "flex-start" }} className="item">
         Home
       </Link>
-      <Link to="/create" style={{ color: "white" }} className="item">
+      <Link to="/create" style={{ color: "rgb(58, 143, 182)", alignSelf: "flex-start" }} className="item">
         Create
       </Link>
-      <InstructionsModal />
+      <Link to="#" >
+        <InstructionsModal />
+      </Link>
+     
       <div className="right menu">
         <GoogleAuth />
       </div>

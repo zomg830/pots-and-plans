@@ -41,7 +41,24 @@ body {
 
 .google.button {
   width: 200px;
+  font-family: "Press Start 2P", cursive;
+  color: rgb(58, 143, 182) !important;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+  box-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
+  background-image: url("./images/redBlack.jpg") !important;
+  height: 60px;
 }
+
+.ui.secondary.pointing.menu {
+  font-family: "Press Start 2P", cursive;
+  text-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
+  font-size: 3vmin;
+}
+
+.google.icon {
+  color: rgb(19, 185, 19);
+}
+
 #burger-img {
   width: 20vw;
   display: block;
@@ -58,6 +75,11 @@ h2 {
 #instructions {
   background-color: transparent;
   border: none;
+  font-size: 3vmin;
+  text-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
+  color: rgb(58, 143, 182);
+  margin: auto;
+  vertical-align: bottom;
 }
 
 .modal-header {
@@ -65,10 +87,12 @@ h2 {
 }
 
 .modal-title {
+  font-family: "Press Start 2P", cursive;
   color: rgb(238, 44, 44);
-  font-size: 26px !important;
-  text-shadow: -1.5px -1.5px 0 blue, 1.5px -1.5px 0 blue, -1.5px 1.5px 0 blue,
-    1.5px 1.5px 0 blue;
+
+  font-size: 3vmin !important;
+  text-shadow: -1.5px -1.5px 0 blue, 1.5px -1.5px 0 blue, -1.5px 1.5px 0 blue, 1.5px 1.5px 0 blue;
+
 }
 
 .modal-body {
@@ -78,9 +102,10 @@ h2 {
   background-size: 100%;
   background-repeat: no-repeat;
   color: rgb(238, 44, 44);
-  font-size: 23px;
-  text-shadow: -1.5px -1.5px 0 darkblue, 1.5px -1.5px 0 darkblue,
-    -1.5px 1.5px 0 darkblue, 1.5px 1.5px 0 darkblue;
+
+  /* font-size: 23px; */
+  font-size: 3vmin;
+  text-shadow: -1.5px -1.5px 0 darkblue, 1.5px -1.5px 0 darkblue, -1.5px 1.5px 0 darkblue, 1.5px 1.5px 0 darkblue;
 }
 
 .modal-footer {
@@ -98,11 +123,15 @@ h2 {
 #editRestaurantList {
   background-image: url("./images/greenPixels.jpg");
   font-family: "Press Start 2P", cursive;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+  font-size: 2vmin;
 }
 
 #deleteRestaurantList {
   background-image: url("./images/redBlack.jpg");
-  font-family: "Press Start 2P", cursive;
+  font-family: "Press Start 2P", cursive; 
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+  font-size: 2vmin;
 }
 
 .ui.segment {
@@ -114,16 +143,25 @@ h2 {
   font-family: "Press Start 2P", cursive;
 }
 
+.test{
+  font-size: 25px;
+  color:yellow;
+  font-family: "Press Start 2P", cursive !important;
+
+}
 .header {
   font-size: 25px;
   margin-bottom: 18px !important;
   font-family: "Press Start 2P", cursive !important;
+  font-size: 3vmin;
 }
 
 .ui.horizontal.segments {
-  background-color: aquamarine;
+  background-color: rgb(128, 255, 213);
   font-family: "Press Start 2P", cursive;
 }
+
+
 
 #balance {
   text-align: center;
@@ -161,7 +199,7 @@ h2 {
   /* height: 100px; */
   font-family: "Press Start 2P", cursive;
   font-size: 1.5vw;
-  color: rgb(0, 140, 255);
+  color: rgb(220, 211, 240);
   text-align: center;
   /* padding: 30px; */
 }
@@ -170,7 +208,7 @@ h2 {
   /* height: 100px; */
   font-family: "Press Start 2P", cursive;
   font-size: 1.5vw;
-  color: rgb(40, 22, 201);
+  color: rgb(226, 237, 28);
   text-align: center;
 }
 
@@ -211,6 +249,54 @@ h2 {
   padding: 10px;
   font-family: "Press Start 2P", cursive;
   background-image: url("./images/greenPixels.jpg");
+}
+
+/* Cool infinite background scrolling animation.
+ * Twitter: @kootoopas
+ */
+
+/* Animations */
+@-webkit-keyframes bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+@-moz-keyframes    bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+@-o-keyframes      bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+@keyframes         bg-scrolling-reverse {
+  100% { background-position: 50px 50px; }
+}
+
+@-webkit-keyframes bg-scrolling {
+  0% { background-position: 50px 50px;}
+}
+@-moz-keyframes    bg-scrolling {
+  0% { background-position: 50px 50px; }
+}
+@-o-keyframes      bg-scrolling {
+  0% { background-position: 50px 50px;}
+}
+@keyframes         bg-scrolling {
+  0% { background-position: 50px 50px; }
+}
+
+/* Main styles */
+body {
+  /* img size is 50x50 */
+  background: url("https://github.com/zomg830/pots-and-plans/blob/aadvbranch/test/testlogic/B.png?raw=true") repeat 0 0 ;
+  
+  -webkit-animation: bg-scrolling-reverse .92s infinite; /* Safari 4+ */
+  -moz-animation:    bg-scrolling-reverse .92s infinite; /* Fx 5+ */
+  -o-animation:      bg-scrolling-reverse .92s infinite; /* Opera 12+ */
+  animation:         bg-scrolling-reverse .92s infinite; /* IE 10+ */
+  -webkit-animation-timing-function: linear;
+  -moz-animation-timing-function:    linear;
+  -o-animation-timing-function:      linear;
+  animation-timing-function:         linear;
+  
+  
 }
 
 .nextDay {
