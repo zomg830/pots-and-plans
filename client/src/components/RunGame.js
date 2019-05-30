@@ -1,6 +1,6 @@
 import React from "react";
 import { connect } from "react-redux";
-
+import {Link} from "react-router-dom";
 import Modal from "../components/Modal";
 import r from "../utils/randomEvent";
 import { saveRestaurantDay, fetchRestaurant } from "../actions";
@@ -10,7 +10,8 @@ class RunGame extends React.Component {
   state = {
     event: null,
     endingBalance: null,
-    userId: null
+    userId: null,
+    day: null
   };
   //get starting balance from db
   async componentWillMount() {
@@ -18,7 +19,8 @@ class RunGame extends React.Component {
     this.setState({
       event: "Welcome back!",
       userId: this.props.restaurant.userId,
-      endingBalance: this.props.restaurant.balance
+      endingBalance: this.props.restaurant.balance,
+      day: this.props.restaurant.number_of_days
     });
   }
   randomGenerator() {
@@ -46,10 +48,12 @@ class RunGame extends React.Component {
       // getting the current balance listed on the DB
       previousBalance: this.props.restaurant.balance,
       event: randomObj.message,
-      image: randomObj.imageURL
+      image: randomObj.imageURL,
+      day: this.state.day + 1
     });
     let dayData = {
       time: 720 + randomObj.time,
+      dayNumber: this.state.day,
       chefSkill: {
         burger: 5 + randomObj.skill,
         hotdog: 2 + randomObj.skill
@@ -57,6 +61,7 @@ class RunGame extends React.Component {
       newBalance: startBalance + randomObj.balance,
       previousBalance: startBalance
     };
+    
     // console.log(randomOrder);
     let burgersSold = 0;
     let hotDogsSold = 0;
@@ -84,6 +89,7 @@ class RunGame extends React.Component {
     let burgerSales = burgers * 7;
     let hotdogSales = hotdogs * 2;
     let totalSales = burgerSales + hotdogSales;
+    // default payments after each day
     let payRent = 500
     let chefPayroll = 250
     let foodMaterials = 100
@@ -91,8 +97,10 @@ class RunGame extends React.Component {
     totalSales -= chefPayroll;
     totalSales -= foodMaterials;
     this.props.saveRestaurantDay(this.props.id, {
-      balance: dayData.newBalance + totalSales
+      balance: dayData.newBalance + totalSales,
+      number_of_days: dayData.dayNumber
     });
+    console.log("day number "+ dayData.dayNumber);
     this.setState({
       endingBalance: dayData.newBalance + totalSales,
       netSales: dayData.newBalance + totalSales - dayData.previousBalance,
@@ -103,6 +111,29 @@ class RunGame extends React.Component {
   renderModalContent = () => {
     return "Select a starting location";
   };
+
+  modalGameOver = () =>{
+    return "Game Over!"
+  }
+
+  renderModalActions2 =() =>{
+    return(
+      <React.Fragment>
+        <button
+          onClick={() => {
+            this.props.saveRestaurantDay(this.props.id, {
+              is_active: false
+            });
+            window.location.reload();
+          }}
+          className="ui button negative"
+        > <Link to="/">
+          Return to Main Page
+        </Link>
+        </button>
+      </React.Fragment>
+    )
+  }
 
   renderModalActions = () => {
     return (
@@ -142,6 +173,16 @@ class RunGame extends React.Component {
 
     if (this.props.currentUserId !== this.state.userId) {
       return <div>You do not have permission to play as this restaurant</div>;
+    }
+
+    if(this.state.endingBalance < 0){
+      console.log(this.state.endingBalance);
+      return(<Modal
+      title="Game Over!"
+      content={"Total number of days " + this.state.day}
+      actions={this.renderModalActions2()}
+    />
+      )
     }
 
     if (!this.props.restaurant.location) {

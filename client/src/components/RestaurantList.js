@@ -39,6 +39,7 @@ class RestaurantList extends Component {
 
   renderList() {
     return this.props.restaurants.map(restaurant => {
+      if(restaurant.is_active === true){
       return (
         <div className="item" key={restaurant._id}>
           {this.renderAdmin(restaurant)}
@@ -55,6 +56,7 @@ class RestaurantList extends Component {
           </div>
         </div>
       );
+    }
     });
   }
 
