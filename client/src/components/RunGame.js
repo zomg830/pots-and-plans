@@ -84,6 +84,12 @@ class RunGame extends React.Component {
     let burgerSales = burgers * 7;
     let hotdogSales = hotdogs * 2;
     let totalSales = burgerSales + hotdogSales;
+    let payRent = 500
+    let chefPayroll = 250
+    let foodMaterials = 100
+    totalSales -= payRent;
+    totalSales -= chefPayroll;
+    totalSales -= foodMaterials;
     this.props.saveRestaurantDay(this.props.id, {
       balance: dayData.newBalance + totalSales
     });
@@ -111,7 +117,7 @@ class RunGame extends React.Component {
           }}
           className="ui button negative"
         >
-          Food Truck
+          Food Truck: $2,500
         </button>
         <button
           className="ui button"
@@ -123,7 +129,7 @@ class RunGame extends React.Component {
             window.location.reload();
           }}
         >
-          Restaurant
+          Restaurant: $5,000
         </button>
       </React.Fragment>
     );

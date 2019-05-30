@@ -114,6 +114,12 @@ h2 {
   font-family: "Press Start 2P", cursive;
 }
 
+.test{
+  font-size: 25px;
+  color:yellow;
+  font-family: "Press Start 2P", cursive !important;
+
+}
 .header {
   font-size: 25px;
   margin-bottom: 18px !important;
@@ -124,6 +130,8 @@ h2 {
   background-color: rgb(128, 255, 213);
   font-family: "Press Start 2P", cursive;
 }
+
+
 
 #balance {
   text-align: center;
