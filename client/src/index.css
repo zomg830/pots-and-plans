@@ -100,7 +100,7 @@ h2 {
   background-size: 100%;
   background-repeat: no-repeat;
   color: rgb(238, 44, 44);
-  font-size: 23px;
+  /* font-size: 23px; */
   font-size: 3vmin;
   text-shadow: -1.5px -1.5px 0 darkblue, 1.5px -1.5px 0 darkblue, -1.5px 1.5px 0 darkblue, 1.5px 1.5px 0 darkblue;
 }
@@ -121,12 +121,14 @@ h2 {
   background-image: url("./images/greenPixels.jpg");
   font-family: "Press Start 2P", cursive;
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+  font-size: 2vmin;
 }
 
 #deleteRestaurantList {
   background-image: url("./images/redBlack.jpg");
   font-family: "Press Start 2P", cursive; 
   text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+  font-size: 2vmin;
 }
 
 .ui.segment {
