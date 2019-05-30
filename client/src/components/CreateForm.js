@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 import { createRestaurant, changeTitle, changeOwnerName } from "../actions";
 
 class CreateForm extends Component {
-  state = { restaurantName: "", ownerName: "" };
+  state = { restaurantName: "", ownerName: "", balance: null };
 
   onInputChange = e => {
     this.setState({ [e.target.name]: e.target.value });
@@ -26,17 +26,41 @@ class CreateForm extends Component {
     }
   };
 
+  handleDifficulty = str => {
+    switch (str) {
+      case "easy":
+        this.setState({ balance: 25000 });
+        break;
+      case "medium":
+        this.setState({ balance: 15000 });
+        break;
+      case "hard":
+        this.setState({ balance: 7500 });
+      default:
+        return null;
+    }
+  };
+
   onFormSubmit = e => {
     e.preventDefault();
 
-    if (!this.state.restaurantName || !this.state.ownerName) {
+    if (
+      !this.state.restaurantName ||
+      !this.state.ownerName ||
+      !this.state.balance
+    ) {
       this.renderError();
     }
 
-    if (this.state.restaurantName && this.state.ownerName) {
+    if (
+      this.state.restaurantName &&
+      this.state.ownerName &&
+      this.state.balance
+    ) {
       const restaurantData = {
         restaurant_name: this.state.restaurantName,
-        owner_name: this.state.ownerName
+        owner_name: this.state.ownerName,
+        balance: this.state.balance
       };
       this.props.createRestaurant(restaurantData);
       this.props.changeTitle("");
@@ -69,6 +93,29 @@ class CreateForm extends Component {
           <button className="ui button" type="submit">
             Submit
           </button>
+          <div className="ui buttons right floated">
+            <button
+              className="ui button"
+              type="button"
+              onClick={() => this.handleDifficulty("easy")}
+            >
+              Easy ($25,000)
+            </button>
+            <button
+              className="ui button"
+              type="button"
+              onClick={() => this.handleDifficulty("medium")}
+            >
+              Medium ($15,000)
+            </button>
+            <button
+              className="ui button"
+              type="button"
+              onClick={() => this.handleDifficulty("hard")}
+            >
+              Hard ($7,500)
+            </button>
+          </div>
         </form>
       </div>
     ) : (

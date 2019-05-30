@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from "react-router-dom";
 
+import API from "../utils/API";
 import { fetchRestaurants } from "../actions";
 import "../index.css";
 
@@ -20,6 +21,7 @@ class RestaurantList extends Component {
             to={`/restaurants/edit/${restaurant._id}`}
             className="ui button primary"
             id="editRestaurantList"
+
           >
             Edit
           </Link>
@@ -37,17 +39,24 @@ class RestaurantList extends Component {
 
   renderList() {
     return this.props.restaurants.map(restaurant => {
+      if(restaurant.is_active === true){
       return (
         <div className="item" key={restaurant._id}>
           {this.renderAdmin(restaurant)}
           <div className="content">
-            <Link to={`/restaurants/play/${restaurant._id}/${restaurant.restaurant_name}`} className="header">
+            <Link
+              to={`/restaurants/play/${restaurant._id}/${
+                restaurant.restaurant_name
+              }`}
+              className="test"
+            >
               {restaurant.restaurant_name}
             </Link>
             <div className="description">Owner: {restaurant.owner_name}</div>
           </div>
         </div>
       );
+    }
     });
   }
 

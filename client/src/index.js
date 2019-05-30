@@ -21,6 +21,7 @@ const store = createStore(
 //The Provider allows the app to take advantage of the Redux store
 //Think of the store as a global state for all components to access
 ReactDOM.render(
+  
   <Provider store={store}>
     <App />
   </Provider>,
