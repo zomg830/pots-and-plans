@@ -50,8 +50,6 @@ body {
 }
 
 .ui.secondary.pointing.menu {
-/* .item { */
-  /* height: 60px; */
   font-family: "Press Start 2P", cursive;
   text-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
   font-size: 3vmin;
@@ -75,13 +73,11 @@ h2 {
 }
 
 #instructions {
-  /* background-color: transparent; */
+  background-color: transparent;
   border: none;
   font-size: 3vmin;
   text-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
   color: rgb(58, 143, 182);
-  /* text-align: center; */
-  /* height: 60px; */
   margin: auto;
   vertical-align: bottom;
 }
@@ -91,8 +87,9 @@ h2 {
 }
 
 .modal-title {
+  font-family: "Press Start 2P", cursive;
   color: rgb(238, 44, 44);
-  font-size: 26px !important;
+  font-size: 3vmin !important;
   text-shadow: -1.5px -1.5px 0 blue, 1.5px -1.5px 0 blue, -1.5px 1.5px 0 blue, 1.5px 1.5px 0 blue;
 }
 
@@ -104,6 +101,7 @@ h2 {
   background-repeat: no-repeat;
   color: rgb(238, 44, 44);
   font-size: 23px;
+  font-size: 3vmin;
   text-shadow: -1.5px -1.5px 0 darkblue, 1.5px -1.5px 0 darkblue, -1.5px 1.5px 0 darkblue, 1.5px 1.5px 0 darkblue;
 }
 
@@ -145,6 +143,7 @@ h2 {
   font-size: 25px;
   margin-bottom: 18px !important;
   font-family: "Press Start 2P", cursive !important;
+  font-size: 3vmin;
 }
 
 .ui.horizontal.segments {

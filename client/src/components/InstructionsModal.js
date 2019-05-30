@@ -2,7 +2,7 @@ import React from "react";
 
 function InstructionsModal() {
     return (
-        <div className="container">
+        <div className="container" style={{marginTop: "3%"}}>
             {/* // <!-- Button trigger modal --> */}
             <button id="instructions" type="button" className="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
             Instructions
