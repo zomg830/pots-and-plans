@@ -41,7 +41,26 @@ body {
 
 .google.button {
   width: 200px;
+  font-family: "Press Start 2P", cursive;
+  color: rgb(58, 143, 182) !important;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
+  box-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
+  background-image: url("./images/redBlack.jpg") !important;
+  height: 60px;
 }
+
+.ui.secondary.pointing.menu {
+/* .item { */
+  /* height: 60px; */
+  font-family: "Press Start 2P", cursive;
+  text-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
+  font-size: 3vmin;
+}
+
+.google.icon {
+  color: rgb(19, 185, 19);
+}
+
 #burger-img {
   width: 20vw;
   display: block;
@@ -56,8 +75,15 @@ h2 {
 }
 
 #instructions {
-  background-color: transparent;
+  /* background-color: transparent; */
   border: none;
+  font-size: 3vmin;
+  text-shadow: -2px -2px 0 darkred, 2px -2px 0 darkred, -2px 2px 0 darkred, 2px 2px 0 darkred !important;
+  color: rgb(58, 143, 182);
+  /* text-align: center; */
+  /* height: 60px; */
+  margin: auto;
+  vertical-align: bottom;
 }
 
 .modal-header {
@@ -96,11 +122,13 @@ h2 {
 #editRestaurantList {
   background-image: url("./images/greenPixels.jpg");
   font-family: "Press Start 2P", cursive;
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
 }
 
 #deleteRestaurantList {
   background-image: url("./images/redBlack.jpg");
   font-family: "Press Start 2P", cursive; 
+  text-shadow: -2px -2px 0 black, 2px -2px 0 black, -2px 2px 0 black, 2px 2px 0 black !important;
 }
 
 .ui.segment {
