@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import Modal from "./Modal";
+import history from "../history";
 import { fetchRestaurant, editRestaurant } from "../actions";
 
 class EditForm extends Component {
@@ -57,7 +59,13 @@ class EditForm extends Component {
     }
 
     if (this.props.currentUserId !== this.state.userId) {
-      return <div>You do not have permission to edit this restaurant</div>;
+      return (
+        <Modal
+          title="Don't touch my mise en place!"
+          content={"You don't have permission to edit this restaurant"}
+          onDismiss={() => history.push("/")}
+        />
+      );
     }
 
     return (
