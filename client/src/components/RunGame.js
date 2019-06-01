@@ -1,6 +1,8 @@
 import React from "react";
 import { connect } from "react-redux";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
+
+import history from "../history";
 import Modal from "../components/Modal";
 import r from "../utils/randomEvent";
 import { saveRestaurantDay, fetchRestaurant } from "../actions";
@@ -61,7 +63,7 @@ class RunGame extends React.Component {
       newBalance: startBalance + randomObj.balance,
       previousBalance: startBalance
     };
-    
+
     // console.log(randomOrder);
     let burgersSold = 0;
     let hotDogsSold = 0;
@@ -90,9 +92,9 @@ class RunGame extends React.Component {
     let hotdogSales = hotdogs * 2;
     let totalSales = burgerSales + hotdogSales;
     // default payments after each day
-    let payRent = 500
-    let chefPayroll = 250
-    let foodMaterials = 100
+    let payRent = 500;
+    let chefPayroll = 250;
+    let foodMaterials = 100;
     totalSales -= payRent;
     totalSales -= chefPayroll;
     totalSales -= foodMaterials;
@@ -100,7 +102,7 @@ class RunGame extends React.Component {
       balance: dayData.newBalance + totalSales,
       number_of_days: dayData.dayNumber
     });
-    console.log("day number "+ dayData.dayNumber);
+    console.log("day number " + dayData.dayNumber);
     this.setState({
       endingBalance: dayData.newBalance + totalSales,
       netSales: dayData.newBalance + totalSales - dayData.previousBalance,
@@ -112,12 +114,12 @@ class RunGame extends React.Component {
     return "Select a starting location";
   };
 
-  modalGameOver = () =>{
-    return "Game Over!"
-  }
+  modalGameOver = () => {
+    return "Game Over!";
+  };
 
-  renderModalActions2 =() =>{
-    return(
+  renderModalActions2 = () => {
+    return (
       <React.Fragment>
         <button
           onClick={() => {
@@ -127,13 +129,13 @@ class RunGame extends React.Component {
             window.location.reload();
           }}
           className="ui button negative"
-        > <Link to="/">
-          Return to Main Page
-        </Link>
+        >
+          {" "}
+          <Link to="/">Return to Main Page</Link>
         </button>
       </React.Fragment>
-    )
-  }
+    );
+  };
 
   renderModalActions = () => {
     return (
@@ -172,17 +174,24 @@ class RunGame extends React.Component {
     }
 
     if (this.props.currentUserId !== this.state.userId) {
-      return <div>You do not have permission to play as this restaurant</div>;
+      return (
+        <Modal
+          title="Get out of my kitchen!"
+          content={"You don't have permission to play as this restaurant"}
+          onDismiss={() => history.push("/")}
+        />
+      );
     }
 
-    if(this.state.endingBalance < 0){
+    if (this.state.endingBalance < 0) {
       console.log(this.state.endingBalance);
-      return(<Modal
-      title="Game Over!"
-      content={"Total number of days " + this.state.day}
-      actions={this.renderModalActions2()}
-    />
-      )
+      return (
+        <Modal
+          title="Game Over!"
+          content={"Total number of days " + this.state.day}
+          actions={this.renderModalActions2()}
+        />
+      );
     }
 
     if (!this.props.restaurant.location) {
@@ -216,7 +225,17 @@ class RunGame extends React.Component {
             <p className="dailyMssg">Daily Message: </p>
             <br />
             <p>{!this.state.event ? "Nothing today!" : this.state.event}</p>
-            <div>{!this.state.image ? <img src="https://github.com/zomg830/pots-and-plans/blob/aadvbranch/test/testlogic/defaultrestaurant.gif?raw=true" height= "200px" width= "200p"></img>: <img src={this.state.image} height= "200px" width= "200p"></img>}</div>
+            <div>
+              {!this.state.image ? (
+                <img
+                  src="https://github.com/zomg830/pots-and-plans/blob/aadvbranch/test/testlogic/defaultrestaurant.gif?raw=true"
+                  height="200px"
+                  width="200p"
+                />
+              ) : (
+                <img src={this.state.image} height="200px" width="200p" />
+              )}
+            </div>
           </div>
           <div className="col-3">
             <p className="totalProfit">Total Profit: </p>
