@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
+import Modal from "./Modal";
+import history from "../history";
 import { createRestaurant, changeTitle, changeOwnerName } from "../actions";
 
 class CreateForm extends Component {
@@ -119,7 +121,11 @@ class CreateForm extends Component {
         </form>
       </div>
     ) : (
-      <div>Please sign in to create a restaurant</div>
+      <Modal
+        title="I'm sorry, who are you?"
+        content={"Please sign in to create a restaurant"}
+        onDismiss={() => history.push("/")}
+      />
     );
   }
 }
